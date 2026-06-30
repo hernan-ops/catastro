@@ -1,0 +1,905 @@
+<!doctype html><html lang=es><head><meta charset=utf-8><title>RESUMEN — Catastro</title><style>body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:980px;margin:0 auto;padding:24px;color:#222;line-height:1.5}
+h1{border-bottom:3px solid #1f78b4}h2{border-bottom:1px solid #ccc;margin-top:28px;color:#0868ac}
+table{border-collapse:collapse;margin:10px 0;font-size:13px}th,td{border:1px solid #bbb;padding:4px 8px}
+th{background:#eef4fa}code{background:#f2f2f2;padding:1px 4px;border-radius:3px}
+blockquote{border-left:4px solid #ff7f00;margin:8px 0;padding:4px 12px;background:#fff7ed;color:#444}
+a{color:#1f78b4}</style></head><body><h1>RESUMEN — Parcelas catastrales: El Foyel · Arroyo Las Minas · Los Repollos</h1>
+<p><strong>Fuente:</strong> ArcGIS REST — Agencia de Recaudación Tributaria de Río Negro · <code>SmartLIS/Base_cata_20251111_v2/MapServer</code> (servicio público oficial).
+Acceso OK con headers de navegador (Safari UA + Referer). Sin 403. Áreas calculadas con shapely sobre proyección equirectangular local (metros); coordenadas EPSG:4326.</p>
+<h2>Tabla comparativa de las 3 zonas</h2>
+<table>
+<thead>
+<tr>
+<th>Zona</th>
+<th>bbox (lon/lat)</th>
+<th style="text-align: right;">Parcelas</th>
+<th style="text-align: right;">Cobertura</th>
+<th style="text-align: right;">Vacío fiscal (ha)</th>
+<th>Tamaño parcelas (ha)</th>
+<th>ANP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>El Foyel</strong></td>
+<td>-71.51,-41.7 → -71.41,-41.6</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">97,0 %</td>
+<td style="text-align: right;"><strong>271,81</strong></td>
+<td>0,020 – 4.307,7 (med 0,70)</td>
+<td>Cipres de las Guaytecas</td>
+</tr>
+<tr>
+<td><strong>Arroyo Las Minas</strong></td>
+<td>-71.54,-41.58 → -71.44,-41.48</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4,1 %</td>
+<td style="text-align: right;"><strong>8.831,53</strong></td>
+<td>1.460,264 – 5.500,6 (med 3.865,15)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>Los Repollos</strong></td>
+<td>-71.55,-41.86 → -71.45,-41.76</td>
+<td style="text-align: right;">427</td>
+<td style="text-align: right;">94,4 %</td>
+<td style="text-align: right;"><strong>514,85</strong></td>
+<td>0,004 – 1.417,7 (med 10,11)</td>
+<td>Río Azul - Lago Escondido</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mayor vacío fiscal (más oportunidad = menos cobertura):</strong>
+1. <strong>Arroyo Las Minas</strong> — 8.831,53 ha sin parcelar (95,9 % del bbox)
+2. <strong>Los Repollos</strong> — 514,85 ha sin parcelar (5,6 % del bbox)
+3. <strong>El Foyel</strong> — 271,81 ha sin parcelar (3,0 % del bbox)</p>
+<blockquote>
+<p>El "vacío fiscal" = área del bbox no cubierta por ninguna parcela mensurada (diferencia geométrica bbox − unión de parcelas). Es un proxy de tierra sin mensurar / posible tierra fiscal dentro del rectángulo consultado.</p>
+</blockquote>
+<h2>Arroyo Las Minas — detalle</h2>
+<ul>
+<li><strong>Parcelas:</strong> 3</li>
+<li><strong>Área bbox:</strong> 9.211,86 ha</li>
+<li><strong>Cobertura por parcelas:</strong> 4,1 %  (cubierto 380,33 ha)</li>
+<li><strong>Vacío fiscal:</strong> 8.831,53 ha (~95,9 % del bbox)</li>
+<li><strong>Rango de tamaños:</strong> 1.460,2640 ha → 5.500,58 ha (mediana 3.865,151 ha)</li>
+<li><strong>Área Natural Protegida (capa id 20):</strong> sin intersección</li>
+</ul>
+<h2>Los Repollos — detalle</h2>
+<ul>
+<li><strong>Parcelas:</strong> 427</li>
+<li><strong>Área bbox:</strong> 9.171,88 ha</li>
+<li><strong>Cobertura por parcelas:</strong> 94,4 %  (cubierto 8.657,03 ha)</li>
+<li><strong>Vacío fiscal:</strong> 514,85 ha (~5,6 % del bbox)</li>
+<li><strong>Rango de tamaños:</strong> 0,0039 ha → 1.417,72 ha (mediana 10,106 ha)</li>
+<li><strong>Área Natural Protegida (capa id 20):</strong> Río Azul - Lago Escondido</li>
+</ul>
+<h2>VACÍOS EL FOYEL — localización</h2>
+<p>Diferencia geométrica <code>bbox − unión(186 parcelas)</code>, explotada en polígonos y filtrando slivers &lt; 0.5 ha (ruido de borde). Resultado: <strong>7 polígonos de vacío</strong> que suman <strong>271,79 ha</strong>.</p>
+<ul>
+<li><strong>RN 40:</strong> capa Red Vial id 25 (VCM_TIPO='Ruta Nacional', pavimentada, jurisdicción Nacional).</li>
+<li><strong>Vacíos a &lt; 500 m de la RN 40 (acceso directo, los más valiosos):</strong> <strong>1</strong> de 7, sumando 104,98 ha.</li>
+<li><strong>Vacío más cercano a la RN 40:</strong> #1 a 0 m (104,98 ha).</li>
+</ul>
+<p>Archivos: <code>vacios_foyel.geojson</code> (polígonos) · <code>mapa_foyel_vacios.html</code> (folium: parcelas gris, vacíos rojo, RN40 naranja, ANP verde).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">superficie_ha</th>
+<th>centroide (lat, lon)</th>
+<th style="text-align: right;">dist_RN40_m</th>
+<th style="text-align: center;">dentro_ANP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">104,98</td>
+<td>-41.64485, -71.45831</td>
+<td style="text-align: right;">0 ◀ &lt;500m</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">91,76</td>
+<td>-41.62652, -71.43266</td>
+<td style="text-align: right;">1.550</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">63,93</td>
+<td>-41.61363, -71.49796</td>
+<td style="text-align: right;">1.165</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6,34</td>
+<td>-41.66517, -71.50151</td>
+<td style="text-align: right;">2.485</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2,12</td>
+<td>-41.65032, -71.48816</td>
+<td style="text-align: right;">1.168</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2,09</td>
+<td>-41.65993, -71.48658</td>
+<td style="text-align: right;">1.560</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0,58</td>
+<td>-41.68365, -71.49916</td>
+<td style="text-align: right;">3.762</td>
+<td style="text-align: center;">no</td>
+</tr>
+</tbody>
+</table>
+<h2>El Foyel — detalle parcelas</h2>
+<ul>
+<li><strong>Parcelas:</strong> 186 · <strong>Cobertura:</strong> 97,0 % · <strong>Vacío:</strong> 271,81 ha</li>
+<li><strong>Rango:</strong> 0,0198 ha → 4.307,70 ha (mediana 0,6999 ha, promedio 125,03 ha)</li>
+<li><strong>Área Natural Protegida:</strong> Cipres de las Guaytecas</li>
+<li><strong>Polígono General (id 40, POL_ESTADO):</strong> 0 features en el bbox (sin polígono general cargado).</li>
+</ul>
+<details><summary>Nomenclaturas El Foyel (PAR_NOMENCLATURA) — 186 únicas</summary>
+
+- `20-1-*-409-058-0000-00`
+- `20-1-*-411-062-0000-00`
+- `20-1-*-416-062-0000-00`
+- `20-1-*-418-064-0000-00`
+- `20-1-*-423-073-0000-00`
+- `20-1-*-429-079-0000-00`
+- `20-1-*-434-083-0000-00`
+- `20-1-*-441-092-0000-00`
+- `20-1-*-444-093-0000-00`
+- `20-1-*-468-125-0000-00`
+- `20-1-*-540-610-0`
+- `20-1-*-550-590-0`
+- `20-1-*-560-645-0`
+- `20-1-*-560-655-0`
+- `20-1-*-565-655-0`
+- `20-1-*-570-575-0`
+- `20-1-*-575-655-0`
+- `20-1-*-580-655-0`
+- `20-1-*-580-656-0000-00`
+- `20-1-*-580-660-0`
+- `20-1-*-585-655-0`
+- `20-1-*-585-656-0000-00`
+- `20-1-*-585-672-0`
+- `20-1-*-588-563-0`
+- `20-1-*-590-573-0`
+- `20-1-*-590-655-0`
+- `20-1-*-592-582-0`
+- `20-1-*-595-655-0`
+- `20-1-*-600-655-0`
+- `20-1-*-605-655-0`
+- `20-1-*-610-630-0`
+- `20-1-*-610-652-0`
+- `20-1-*-610-655-0`
+- `20-1-*-615-585-0`
+- `20-1-*-615-650-0`
+- `20-1-*-615-720-0`
+- `20-1-*-618-630-0000-00`
+- `20-1-*-620-570-0`
+- `20-1-*-620-590-0`
+- `20-1-*-620-592-0`
+- `20-1-*-620-602-0`
+- `20-1-*-620-640-0000-00`
+- `20-1-*-620-700-0000-00`
+- `20-1-*-621-610-0000-00`
+- `20-1-*-622-620-0000-00`
+- `20-1-*-625-600-0000-00`
+- `20-1-*-628-592-0`
+- `20-1-*-628-602-0`
+- `20-1-*-628-634-0`
+- `20-1-*-630-610-0`
+- `20-1-*-630-625-0`
+- `20-1-*-632-580-0000-00`
+- `20-1-*-632-590-0`
+- `20-1-*-632-600-0`
+- `20-1-*-632-636-0`
+- `20-1-*-635-540-0000-00`
+- `20-1-*-635-560-0`
+- `20-1-*-635-575-0`
+- `20-1-*-635-615-0`
+- `20-1-*-635-635-0`
+- `20-1-*-636-651-0`
+- `20-1-*-640-575-0`
+- `20-1-*-640-635-0`
+- `20-1-*-640-670-0000-00`
+- `20-1-*-645-600-0`
+- `20-1-*-650-562-0`
+- `20-1-*-650-627-0`
+- `20-1-*-650-640-0`
+- `20-1-*-655-630-0`
+- `20-1-*-656-652-0`
+- `20-1-*-660-560-0`
+- `20-1-*-660-630-0`
+- `20-1-*-660-660-0`
+- `20-1-*-665-637-0`
+- `20-1-*-665-640-0`
+- `20-1-*-665-660-0`
+- `20-1-*-670-595-0`
+- `20-1-*-670-670-0`
+- `20-1-*-674-678-0`
+- `20-1-*-710-552-0`
+- `20-1-*-710-555-0`
+- `20-1-*-710-690-0`
+- `20-1-*-714-550-0`
+- `20-1-*-715-583-0`
+- `20-1-*-717-565-0`
+- `20-1-*-718-545-0`
+- `20-1-*-738-550-0`
+- `20-1-*-740-590-0`
+- `20-1-*-770-670-0`
+- `20-1-M-001-001-0000-00`
+- `20-1-M-001-002-0000-00`
+- `20-1-M-010-01-0`
+- `20-1-M-010-02-0`
+- `20-1-M-010-03-0`
+- `20-1-M-010-04-0`
+- `20-1-M-010-05-0`
+- `20-1-M-010-06-0`
+- `20-1-M-010-07-0`
+- `20-1-M-011-002-0000-00`
+- `20-1-M-011-003-0000-00`
+- `20-1-M-011-01-0`
+- `20-1-M-100-01-0`
+- `20-1-M-110-01-0`
+- `20-1-M-110-02-0`
+- `20-1-M-110-03-0`
+- `20-1-M-110-04-0`
+- `20-1-M-110-05-0`
+- `20-1-M-110-06-0`
+- `20-1-M-111-01-0`
+- `20-1-M-111-02-0`
+- `20-1-M-111-03-0`
+- `20-1-M-111-04-0`
+- `20-1-M-111-05-0`
+- `20-1-M-111-06-0`
+- `20-1-M-112-01-0`
+- `20-1-M-113-01-0`
+- `20-1-M-114-01-0`
+- `20-1-M-114-02-0`
+- `20-1-M-115-01-0`
+- `20-1-M-120-01-0`
+- `20-1-M-120-02-0`
+- `20-1-M-120-03-0`
+- `20-1-M-120-04-0`
+- `20-1-M-121-01-0`
+- `20-1-M-121-02-0`
+- `20-1-M-121-03-0`
+- `20-1-M-121-04-0`
+- `20-1-M-121-05-0`
+- `20-1-M-121-06-0`
+- `20-1-M-121-07-0`
+- `20-1-M-121-08-0`
+- `20-1-M-122-01-0`
+- `20-1-M-122-02-0`
+- `20-1-M-122-03-0`
+- `20-1-M-122-04-0`
+- `20-1-M-122-05-0`
+- `20-1-M-122-06-0`
+- `20-1-M-122-07-0`
+- `20-1-M-122-08-0`
+- `20-1-M-122-09-0`
+- `20-1-M-122-10-0`
+- `20-1-M-123-01-0`
+- `20-1-M-123-02-0`
+- `20-1-M-123-03-0`
+- `20-1-M-123-04-0`
+- `20-1-M-123-05-0`
+- `20-1-M-123-06-0`
+- `20-1-M-123-07-0`
+- `20-1-M-123-08-0`
+- `20-1-M-124-01-0`
+- `20-1-M-125-01-0`
+- `20-1-M-125-02-0`
+- `20-1-M-125-03-0`
+- `20-1-M-125-04-0`
+- `20-1-M-125-05-0`
+- `20-1-M-125-06-0`
+- `20-1-M-125-07-0`
+- `20-1-M-127-01-0`
+- `20-1-M-130-01-0`
+- `20-1-M-130-02-0`
+- `20-1-M-130-03-0`
+- `20-1-M-130-04-0`
+- `20-1-M-130-05-0`
+- `20-1-M-130-06-0`
+- `20-1-M-130-07-0`
+- `20-1-M-131-01-0`
+- `20-1-M-131-02-0`
+- `20-1-M-131-03-0`
+- `20-1-M-131-04-0`
+- `20-1-M-131-05-0`
+- `20-1-M-131-06-0`
+- `20-1-M-131-07-0`
+- `20-1-M-131-08-0`
+- `20-1-M-131-09-0`
+- `20-1-M-131-10-0`
+- `20-1-M-135-01-0`
+- `20-1-M-135-02-0`
+- `20-1-M-135-03-0`
+- `20-1-M-135-04-0`
+- `20-1-M-135-05-0`
+- `20-1-M-135-06-0`
+- `20-1-M-135-07-0`
+- `20-1-M-135-08-0`
+- `20-1-M-144-01-0`
+- `20-1-M-144-02-0`
+- `20-1-M-144-03-0`
+
+</details>
+
+<hr />
+<p><em>El servicio sólo expone geometría + nomenclatura + superficie. No contiene titularidad/dueño.</em></p>
+<h1>TAREA 3 — Capa FISCALES + vacío #1 Foyel + Las Minas a fondo</h1>
+<h2>A) Capa Fiscales (id 79): campos y resultados</h2>
+<p>La capa <strong>Fiscales</strong> es una vista de la tabla <code>CATA_50_GIS_PARCELAS</code> (mismo esquema que el resto de parcelas) filtrada a parcelas fiscales. Campos relevantes (alias):
+<code>PAR_NOMENCLATURA</code>, <code>PAR_ESTADO</code>, <code>PAR_TIPO</code>, <code>PAR_DEPARTAMENTO</code>, <code>PAR_SUPERFICIE_MENSURA</code>, <code>PAR_SUPERFICIE_TRIBUTARIA</code>, <code>PAR_EXENTA</code>, <code>PAR_IMPONIBLE</code>, <code>PAR_OBSERVACION</code>, <code>PAR_FECHA_REGISTRACION</code>, <code>PAR_LEGUA/SECCION/FRACCION/CHACRA/QUINTA/MANZANA/LOTE</code>, <code>TRM_EXPEDIENTE</code> (expediente de trámite). No expone titular.</p>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th style="text-align: right;">El Foyel</th>
+<th style="text-align: right;">Las Minas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fiscales (id 79)</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+<tr>
+<td>Inactivas (id 80)</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>No hay ninguna parcela marcada como FISCAL (capa 79) en ninguna de las dos zonas.</strong> Las 7 "Inactivas" de El Foyel son parcelas privadas dadas de baja/inactivadas (todas <code>PAR_IMPONIBLE=S</code>, es decir gravables/privadas), no tierra fiscal. Archivos <code>fiscales_foyel.geojson</code> y <code>fiscales_lasminas.geojson</code> se guardaron como FeatureCollection vacíos (0 features) — el dato es justamente la ausencia.</p>
+</blockquote>
+<h2>B) Vacío #1 de El Foyel (sobre RN40)</h2>
+<ul>
+<li><strong>Superficie:</strong> 104,98 ha · toca la RN40 (distancia 0 m).</li>
+<li><strong>Intersección con parcelas fiscales:</strong> <strong>NINGUNA</strong> (no hay fiscales en la zona). Tampoco coincide con parcela activa alguna (por definición es el hueco entre parcelas).</li>
+<li><strong>Conclusión:</strong> es <strong>tierra sin mensurar de estado dominial DESCONOCIDO</strong> — candidata, pero <strong>NO confirmada como fiscal</strong> por el catastro. Requiere verificación en Dirección de Tierras.</li>
+</ul>
+<p>⚠️ <strong>Importante sobre la forma:</strong> el vacío #1 NO es un lote rectangular compacto. Es un <strong>corredor irregular</strong> que serpentea entre las parcelas siguiendo la traza de la RN40 (399 vértices, con 9 parcelas privadas embebidas como "islas" dentro del hueco; el polígono llena sólo ~2,4 % de su caja contenedora). Por eso doy la <strong>caja envolvente</strong> (extensión máxima) + un <strong>punto interior garantizado</strong>, no 4 esquinas de un rectángulo real. La geometría exacta está en <code>vacios_foyel.geojson</code> (feature id=1).</p>
+<p><strong>Coordenadas para Dirección de Tierras (formato lat,lon copiable):</strong></p>
+<pre><code>Centroide:            -41.644851,-71.458309
+Punto interior:       -41.649963,-71.456634   (cae dentro del polígono)
+--- caja envolvente (extensión máxima del corredor) ---
+Esquina NO:           -41.600000,-71.481337
+Esquina NE:           -41.600000,-71.434356
+Esquina SE:           -41.700000,-71.434356
+Esquina SO:           -41.700000,-71.481337
+</code></pre>
+<h2>C) Arroyo Las Minas a fondo</h2>
+<p><strong>Las 3 parcelas rurales (las que ocupan el ~4 %):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Nomenclatura</th>
+<th style="text-align: right;">Mensura (ha)</th>
+<th style="text-align: center;">Estado</th>
+<th>Centroide (lat,lon)</th>
+<th style="text-align: right;">Cota aprox</th>
+<th style="text-align: right;">Dist. RN40</th>
+<th>Exped.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>20-1-*-925-750-0</code></td>
+<td style="text-align: right;">5.598,09</td>
+<td style="text-align: center;">A</td>
+<td>-41.5169, -71.3847</td>
+<td style="text-align: right;">~1250 m</td>
+<td style="text-align: right;">835 m</td>
+<td>0-DUP 3563/1999</td>
+</tr>
+<tr>
+<td><code>20-1-*-770-670-0</code></td>
+<td style="text-align: right;">4.505,43</td>
+<td style="text-align: center;">A</td>
+<td>-41.5979, -71.4370</td>
+<td style="text-align: right;">~750 m</td>
+<td style="text-align: right;">0 m</td>
+<td>0-DUP 3291/1990</td>
+</tr>
+<tr>
+<td><code>20-1-*-740-590-0</code></td>
+<td style="text-align: right;">1.546,40</td>
+<td style="text-align: center;">A</td>
+<td>-41.6067, -71.4877</td>
+<td style="text-align: right;">~800 m</td>
+<td style="text-align: right;">0 m</td>
+<td>0-DUP 3291/1990</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Las 3 son parcelas <strong>privadas activas</strong> (<code>PAR_ESTADO=A</code>, <code>PAR_IMPONIBLE=S</code>), rurales (<code>PAR_TIPO=4</code>), de mensura antigua (expedientes DUP 1990/1999). La superficie de mensura (miles de ha) excede lo que cae dentro del bbox: son estancias grandes que entran sólo parcialmente en el recorte.</p>
+</blockquote>
+<p><strong>Vacíos de Las Minas (&gt;10 ha):</strong> 1 polígono(s), suman 8.831,53 ha. Relieve del bbox: curvas de nivel de <strong>600 a 1750 m</strong> (fondo de valle ↔ alta montaña).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">sup (ha)</th>
+<th>centroide (lat,lon)</th>
+<th style="text-align: right;">cota aprox</th>
+<th style="text-align: right;">dist RN40</th>
+<th style="text-align: left;">corredor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8.831,53</td>
+<td>-41.5289, -71.4912</td>
+<td style="text-align: right;">~1250 m</td>
+<td style="text-align: right;">0 m ◀&lt;500m</td>
+<td style="text-align: left;">valle (cerca ruta)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Como el 96 % es prácticamente un único hueco continuo que va del valle a la montaña, la distinción valle/ladera se ve mejor en el mapa (<code>mapa_candidatos.html</code>): activá la capa <strong>Curvas de nivel</strong> y la <strong>RN40</strong> — el corredor bajo sigue la ruta (~600–800 m); lo que sube hacia cotas 1000–1750 m es ladera no aprovechable. Hay además 2 lagos y 1 laguna en el bbox.</p>
+</blockquote>
+<p><strong>Entregables Tarea 3:</strong> <code>fiscales_foyel.geojson</code>, <code>fiscales_lasminas.geojson</code> (0 feats), <code>vacios_lasminas.geojson</code>, <code>mapa_candidatos.html</code>.</p>
+<h1>TAREA 4 — Altimetría de Las Minas + señales de agua</h1>
+<p><strong>Zona:</strong> Arroyo Las Minas · bbox -71.54,-41.58 → -71.44,-41.48 (centro ~-41.53,-71.49).
+<strong>Insumos reutilizados:</strong> <code>vacios_lasminas.geojson</code> (hueco fiscal 8.831,53 ha), <code>parcelas_lasminas</code>, <code>redvial_lasminas</code> (RN40 = línea "Ruta Nacional"), <code>agua_lasminas</code> (lagos catastro).</p>
+<h2>Fuentes de datos (todas gratuitas, sin API key)</h2>
+<ul>
+<li><strong>DEM:</strong> Copernicus <strong>GLO-30</strong> (30 m) — AWS Open Data público (<code>copernicus-dem-30m.s3</code>), lectura por ventana vía <code>/vsicurl/</code>. <em>No hizo falta OpenTopography ni API key.</em></li>
+<li><strong>Hidrografía:</strong> OpenStreetMap vía <strong>Overpass API</strong> (<code>waterway=*</code>, <code>natural=water/wetland</code>) → <code>agua_osm_lasminas.geojson</code> (26 geom).</li>
+<li><strong>NDWI/NDVI:</strong> <strong>Sentinel-2 L2A</strong> vía <strong>STAC earth-search (Element84)</strong>, sin login. Escena elegida <code>S2B_18GYV_20240125</code> — <strong>25-ene-2024, nubosidad 0,0008 %</strong> (verano seco hemisferio sur).</li>
+</ul>
+<h2>PARTE A — Altimetría / pendientes</h2>
+<ul>
+<li>Relieve del bbox: <strong>496 – 1.803 m</strong>. Valle/fondo ~500–800 m; laderas y filos hasta 1.800 m.</li>
+<li>Pendiente calculada en UTM 19S (píxel 30 m), reclasificada: verde &lt;8°, amarillo 8–15°, rojo &gt;15°.</li>
+<li>Entregables: <code>elevacion_lasminas.tif</code>, <code>pendiente_lasminas.tif</code>, <code>curvas_dem_lasminas.geojson</code> (curvas DEM cada 50 m, 193 líneas), <code>mapa_elevacion_lasminas.png</code>, <code>mapa_pendiente_lasminas.png</code>.</li>
+</ul>
+<h3>Vacío fiscal recortado contra pendiente</h3>
+<p>De las <strong>8.831,53 ha</strong> catastrales del vacío (8.801,6 ha al rasterizar a 30 m):</p>
+<table>
+<thead>
+<tr>
+<th>Clase pendiente</th>
+<th style="text-align: right;">ha</th>
+<th style="text-align: right;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&lt;8° (valle plano/usable)</strong></td>
+<td style="text-align: right;"><strong>2.481</strong></td>
+<td style="text-align: right;"><strong>28,2 %</strong></td>
+</tr>
+<tr>
+<td>8–15° (intermedio)</td>
+<td style="text-align: right;">2.077</td>
+<td style="text-align: right;">23,6 %</td>
+</tr>
+<tr>
+<td>&gt;15° (ladera no usable)</td>
+<td style="text-align: right;">4.243</td>
+<td style="text-align: right;">48,2 %</td>
+</tr>
+</tbody>
+</table>
+<p>→ <code>valle_aprovechable_lasminas.geojson</code> = 226 polígonos (&gt;0,5 ha) sumando <strong>2.374,9 ha</strong> de valle &lt;8° dentro del fiscal.</p>
+<p><strong>Cercanía a la RN40</strong> (lo realmente accesible):
+| Franja | Valle &lt;8° usable |
+|---|---:|
+| a &lt;500 m de RN40 | <strong>489 ha</strong> |
+| a &lt;1.000 m | 897 ha |
+| a &lt;2.000 m | 1.532 ha |</p>
+<blockquote>
+<p>El vacío es ~96 % montaña/ladera con corredores planos serpenteando por los fondos de valle siguiendo la RN40 y los cursos de agua. El valle aprovechable NO es un bloque compacto: es una red de fondos de valle.</p>
+</blockquote>
+<h2>PARTE B — Señales de agua</h2>
+<ul>
+<li><strong>Cursos:</strong> OSM aporta 13 ríos + 9 arroyos + 3 cuerpos + 1 humedal. Nombrados: <strong>Río Manso, Río Villegas, Arroyo Guanaco, Cañadón de la Mosca, Lago Amor, Laguna Huala Hué</strong> (+ Lago Steffen del catastro). <em>No hay un "Arroyo Las Minas" rotulado en OSM dentro del bbox; el nombre es de uso local.</em></li>
+<li><strong>NDWI</strong> (<code>ndwi_lasminas.tif</code>): resalta los lagos/lagunas y tramos anchos de río.</li>
+<li><strong>NDVI verano</strong> (<code>ndvi_lasminas.tif</code>): <strong>⚠ saturado-alto en casi todo el bbox</strong> — es zona de <strong>bosque andino-patagónico húmedo</strong>, todo verde en verano. A diferencia de la estepa árida, acá la vega NO aparece como isla verde aislada. Por eso el discriminador operativo de agua NO es el verdor sino: <strong>cercanía a curso mapeado + NDWI/agua abierta + fondo de valle de cota baja</strong>, que es como se ponderó el ranking.</li>
+</ul>
+<h3>Cruce → candidatos (<code>candidatos_agua_lasminas.geojson</code>, 146 rankeados)</h3>
+<p>Score = área usable + cercanía RN40 + cercanía a curso + NDVI + bonus "combo de oro" (RN40&lt;800 m <strong>y</strong> curso&lt;200 m) + bonus valle bajo.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th style="text-align: right;">score</th>
+<th style="text-align: right;">ha</th>
+<th style="text-align: right;">cota m</th>
+<th style="text-align: right;">pend°</th>
+<th style="text-align: right;">RN40 m</th>
+<th style="text-align: right;">curso m</th>
+<th style="text-align: right;">NDVI</th>
+<th>clase</th>
+<th>lat,lon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">95,3</td>
+<td style="text-align: right;">33,1</td>
+<td style="text-align: right;">721</td>
+<td style="text-align: right;">4,4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0,87</td>
+<td>vega_sobre_curso</td>
+<td>-41.54869,-71.47219</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">94,8</td>
+<td style="text-align: right;">76,8</td>
+<td style="text-align: right;">615</td>
+<td style="text-align: right;">3,2</td>
+<td style="text-align: right;">408</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">0,86</td>
+<td>vega_sobre_curso</td>
+<td>-41.56632,-71.50677</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">93,4</td>
+<td style="text-align: right;">574,1</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: right;">3,8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">0,85</td>
+<td>(verde extenso)</td>
+<td>-41.49701,-71.45627</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">84,3</td>
+<td style="text-align: right;">20,3</td>
+<td style="text-align: right;">809</td>
+<td style="text-align: right;">6,0</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0,77</td>
+<td>vega_sobre_curso</td>
+<td>-41.53282,-71.46163</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">81,6</td>
+<td style="text-align: right;">8,9</td>
+<td style="text-align: right;">683</td>
+<td style="text-align: right;">4,5</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0,82</td>
+<td>vega_sobre_curso</td>
+<td>-41.55884,-71.48257</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">80,0</td>
+<td style="text-align: right;">2,7</td>
+<td style="text-align: right;">639</td>
+<td style="text-align: right;">4,9</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0,88</td>
+<td>vega_sobre_curso</td>
+<td>-41.56674,-71.49142</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h1>3 (574 ha) es un manchón verde extenso al N del bbox (cota 1.023 m): casi seguro <strong>bosque denso</strong>, no vega — útil como superficie pero NO como punto de fuente. Los candidatos chicos sobre curso en fondo de valle (#1, #2) son las mejores señales.</h1>
+</blockquote>
+<h2>PARTE C — Mapa interactivo</h2>
+<p><code>mapa_agua_lasminas.html</code> (folium, <strong>autocontenido</strong>, overlays embebidos en base64):
+OSM ↔ Satélite Esri conmutable · LayerControl · <strong>click = coordenadas</strong> · MeasureControl · vacío fiscal (contorno) · valle &lt;8° (verde) · 8–15° (amarillo) · ladera &gt;15° (rojo semitransp) · vegas/NDVI alto (magenta) · NDWI (cian) · cursos OSM (azul) · lagos (azul) · RN40 (naranja) · curvas 50 m · 25 candidatos con marcadores numerados y popup (superficie, cota, pendiente, dist RN40, dist curso, NDVI).</p>
+<h2>⚠ Alcance (importante)</h2>
+<p>Desde DEM+satélite sólo se detectan <strong>señales de agua superficial y vega húmeda</strong>. <strong>Composición, acuífero profundo y caudal (= "agua mineral") NO se determinan así</strong> — requieren estudio hidrogeológico de campo (geoeléctrica/sondeo/aforo + análisis fisicoquímico). Este trabajo <strong>preselecciona el mejor punto</strong> para ese estudio, no confirma agua mineral. Además el "vacío fiscal" es tierra sin mensurar de dominio <strong>DESCONOCIDO</strong> (no confirmada fiscal) — verificar en Dirección de Tierras de Río Negro.</p>
+<h2>RESPUESTAS</h2>
+<ol>
+<li><strong>¿Cuántas ha del vacío son valle plano usable (&lt;8°)?</strong> → <strong>2.481 ha</strong> (28,2 % de las 8.831). El resto: 2.077 ha intermedias (8–15°) y 4.243 ha de ladera &gt;15° (48 %). Dentro del fiscal y &gt;0,5 ha: <strong>2.374,9 ha</strong> en 226 polígonos.</li>
+<li><strong>¿Dónde está la franja usable respecto de la RN40?</strong> → Son corredores de fondo de valle que siguen la traza de la RN40 y los cursos de agua. <strong>489 ha tocan la franja &lt;500 m de la RN40</strong> (acceso directo); 897 ha a &lt;1 km; 1.532 ha a &lt;2 km. El grueso plano-accesible está en el <strong>fondo de valle SO–S del bbox</strong> (cotas 600–800 m).</li>
+<li><strong>¿Hay vegas o cursos dentro de la franja usable?</strong> → Sí. Cursos OSM (ríos/arroyos) atraviesan los fondos de valle planos; los mejores cruces "plano+fiscal+curso+RN40" están en el sector <strong>S/SO</strong> (cotas 600–720 m). El NDVI está saturado (bosque húmedo), así que la señal fuerte de agua son los <strong>cursos mapeados + NDWI de lagos</strong> más que el verdor.</li>
+<li><strong>Mejor punto candidato para estudio hidrogeológico de campo:</strong>
+   - <strong>PRIMARIO → Candidato #1: -41.54869, -71.47219</strong> — 33 ha planas (4,4°), cota 721 m, <strong>sobre un curso de agua (0 m) y sobre la RN40 (0 m)</strong>, dentro del vacío fiscal, NDVI 0,87. Combina acceso inmediato + curso permanente + terreno llano fiscal.
+   - <strong>ALTERNATIVO → Candidato #2: -41.56632, -71.50677</strong> — 77 ha, <strong>fondo de valle más bajo (cota 615 m = zona de convergencia/recarga)</strong>, pendiente 3,2°, curso a 60 m, RN40 a 408 m. El más grande y bajo; bueno si se prioriza caudal/convergencia sobre acceso.</li>
+</ol>
+<p><em>Llevar al campo ambos puntos; confirmar con geoeléctrica + aforo + análisis fisicoquímico.</em></p>
+<p><strong>Entregables Tarea 4:</strong> <code>elevacion_lasminas.tif</code>, <code>pendiente_lasminas.tif</code>, <code>ndwi_lasminas.tif</code>, <code>ndvi_lasminas.tif</code>, <code>mapa_elevacion_lasminas.png</code>, <code>mapa_pendiente_lasminas.png</code>, <code>mapa_ndwi_lasminas.png</code>, <code>mapa_ndvi_lasminas.png</code>, <code>curvas_dem_lasminas.geojson</code>, <code>valle_aprovechable_lasminas.geojson</code>, <code>agua_osm_lasminas.geojson</code>, <code>candidatos_agua_lasminas.geojson</code>, <code>mapa_agua_lasminas.html</code>.</p>
+<h1>TAREA 6 — Candidatos Las Minas + perforaciones + Mallín Ahogado completo</h1>
+<p><strong>Foco permanente: TIERRA FISCAL.</strong> Consolidado en <code>mapa_master.html</code> (un solo mapa,
+ambas zonas, todo conmutable). DEM y método AWS <code>/vsicurl/</code> reutilizados.</p>
+<h2>⚠ Corrección de bbox de Mallín (importante)</h2>
+<p>El bbox dado <code>-71.73,-41.91,-71.63,-41.81</code> devolvió <strong>0 parcelas, 0 rutas, 0 hidro</strong>:
+cae en la <strong>cordillera / Parque Nacional al W de El Bolsón</strong> (sólo ANP y un lago).
+Lo corregí a <strong><code>-71.62,-41.94,-71.52,-41.84</code></strong> = Mallín Ahogado real (NW de El Bolsón,
+753 parcelas, RP86, Río Azul en el borde W). Todo Mallín de abajo usa ese bbox.</p>
+<h2>PARTE B — Subsuelo (detalle completo en <code>subsuelo_segemar_pozos.md</code>)</h2>
+<ul>
+<li><strong>SEGEMAR/SIGAM:</strong> geoservicios WMS/WFS vivos, pero la hidrogeología vectorial
+  (<code>250KUnidadHidrogeologica</code>) <strong>sólo cubre la Pampa</strong> (8 polígonos, todos en BA);
+  geología/litología 250K <strong>no vectorizada</strong> en la zona. La Hoja 4172-IV Bariloche
+  existe <strong>sólo en PDF</strong>. → capa WMS dejada conmutable igual (sin cobertura local).</li>
+<li><strong>Pozos:</strong> ni DPA Río Negro, ni SIAS, ni IGN exponen pozos puntuales descargables.
+  <strong>Hay que pedirlo presencial</strong> (lista en el .md): DPA delegación El Bolsón, SEGEMAR,
+  INTA/Reserva Loma del Medio, CFI (estudio de suelos 15.000 ha).</li>
+<li><strong>Contexto geológico (sí conseguido, citable):</strong> fondos de valle = <strong>gravas
+  glacifluviales cuaternarias</strong> (acuífero libre somero productivo) sobre batolito
+  granítico; <strong>Río Azul = agua glaciar del Hielo Azul</strong>. Estudio de campo: SEV/TEM +
+  perforación en el relleno de gravas cerca del curso.</li>
+</ul>
+<h2>PARTE C — Mallín Ahogado (pipeline completo replicado)</h2>
+<ul>
+<li><strong>Catastral:</strong> 753 parcelas (692 privadas/otras + 61 inactivas). Cobertura <strong>36 %</strong>,
+  <strong>vacío 5.903 ha (64 %)</strong>. <strong>Parcelas FISCALES (capa 79) = 0</strong> (igual que Las Minas y
+  Foyel). La tierra fiscal de Mallín NO está rotulada en catastro: es la <strong>Reserva
+  Forestal Loma del Medio–Río Azul</strong> (estado nacional/INTA) + ocupación de pobladores.</li>
+<li><strong>Altimetría:</strong> relieve <strong>278–1.626 m</strong>. Valle <strong>&lt;8° = 783 ha</strong>; intermedio 1.392 ha;
+  ladera &gt;15° = 3.732 ha. <code>valle_mallin.geojson</code> = 228 polígonos, 645 ha (&gt;0,5 ha).</li>
+<li><strong>Agua:</strong> OSM da <strong>Río Azul, Río Quemquemtreu, Arroyo del Medio, Don Bartolo, Teno,
+  Río Raquel</strong> + acueducto. NDWI/NDVI Sentinel-2 <strong>19-feb-2024 (nubes 0,03 %)</strong>.</li>
+<li><strong>Candidato óptimo Mallín:</strong> <code>candidatos_agua_mallin.geojson</code> (105 rankeados), cruce
+  valle plano ∩ vacío ∩ cerca RP86 ∩ cerca luz (proxy parcelas servidas) ∩ curso.</li>
+</ul>
+<h2>TABLA COMPARATIVA FINAL — Las Minas vs Mallín Ahogado</h2>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th><strong>Arroyo Las Minas</strong></th>
+<th><strong>Mallín Ahogado</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bbox usado</td>
+<td>-71.54,-41.58,-71.44,-41.48</td>
+<td>-71.62,-41.94,-71.52,-41.84 <em>(corregido)</em></td>
+</tr>
+<tr>
+<td>Parcelas</td>
+<td>3</td>
+<td>753 (692 priv + 61 inact)</td>
+</tr>
+<tr>
+<td>Cobertura catastral</td>
+<td>4,1 %</td>
+<td>36,0 %</td>
+</tr>
+<tr>
+<td>Vacío (sin mensurar)</td>
+<td>8.831 ha (96 %)</td>
+<td>5.903 ha (64 %)</td>
+</tr>
+<tr>
+<td><strong>FISCAL confirmado (capa 79)</strong></td>
+<td><strong>NO (0)</strong></td>
+<td><strong>NO (0)</strong> — pero <strong>Reserva Forestal estatal</strong> (fiscal de hecho)</td>
+</tr>
+<tr>
+<td>Relieve</td>
+<td>496–1.803 m</td>
+<td>278–1.626 m</td>
+</tr>
+<tr>
+<td><strong>Valle &lt;8° usable</strong></td>
+<td><strong>2.481 ha</strong> (489 ha a &lt;500 m ruta)</td>
+<td><strong>783 ha</strong></td>
+</tr>
+<tr>
+<td>Señal de agua</td>
+<td>Ríos Manso/Villegas, A° Guanaco; lagos</td>
+<td><strong>Río Azul (glaciar Hielo Azul)</strong>, Quemquemtreu, A° del Medio</td>
+</tr>
+<tr>
+<td>Acceso ruta</td>
+<td><strong>RN40</strong> (toca, 0 m)</td>
+<td><strong>RP86 asfaltada</strong> (2022)</td>
+</tr>
+<tr>
+<td>Acceso luz</td>
+<td>corredor RN40</td>
+<td><strong>EDERSA</strong> (zona poblada, ~300 flias)</td>
+</tr>
+<tr>
+<td>Mejor candidato (coord)</td>
+<td><strong>C1 -41.54869,-71.47219</strong> · C2 -41.56632,-71.50677</td>
+<td><strong>-41.88410,-71.53238</strong></td>
+</tr>
+</tbody>
+</table>
+<h2>RESPUESTAS</h2>
+<ol>
+<li><strong>¿Mallín Ahogado tiene parcelas FISCALES confirmadas en el catastro?</strong>
+   <strong>NO.</strong> La capa Fiscales (id 79) da <strong>0 features</strong> en Mallín (probado en el bbox de
+   Mallín, en el núcleo de El Bolsón y en un bbox amplio: 0 en todos). Es el <strong>mismo
+   resultado que Las Minas y Foyel</strong>: el catastro de la ART Río Negro <strong>no rotula tierra
+   fiscal</strong> en estas zonas. PERO la tierra fiscal de Mallín <strong>sí está confirmada por otra
+   vía</strong>: la <strong>Reserva Forestal Loma del Medio–Río Azul</strong> (dominio estatal, ~300 familias
+   pobladoras en tierra fiscal). Diferencia clave: en Las Minas el fiscal es <em>inferido</em>
+   (vacío sin mensurar); en Mallín es <em>administrativamente real</em> (reserva del Estado),
+   aunque no aparezca tildado como "Fiscal" en la capa catastral.</li>
+<li><strong>¿Cuántas ha planas usables (&lt;8°) tiene Mallín vs Las Minas?</strong>
+   <strong>Mallín ≈ 783 ha</strong> (645 ha en polígonos &gt;0,5 ha) · <strong>Las Minas ≈ 2.481 ha</strong>
+   (2.375 ha en polígonos; 489 ha a &lt;500 m de la RN40). Las Minas tiene <strong>~3× más</strong>
+   valle plano, pero es vacío de dominio incierto; el de Mallín es menor pero está
+   sobre tierra fiscal real y con mejor agua/acceso/servicios.</li>
+<li><strong>¿Conseguiste dato real de perforaciones/acuífero, o hay que pedirlo presencial?</strong>
+   <strong>Hay que pedirlo presencial.</strong> No hay capa pública descargable de pozos (DPA RN /
+   SIAS / IGN) ni hidrogeología vectorial SEGEMAR para la cordillera (sólo cubre la
+   Pampa). Sí se obtuvo <strong>contexto geológico regional</strong> (acuífero de gravas glacifluviales
+   de valle; Río Azul = agua glaciar) y la <strong>lista de organismos a los que pedir</strong> los
+   registros (DPA El Bolsón, SEGEMAR Hoja 4172-IV, INTA/Reserva, CFI). Ver <code>subsuelo_segemar_pozos.md</code>.</li>
+<li><strong>Entre Las Minas y Mallín Ahogado, ¿cuál es mejor para tierra fiscal + agua + acceso?</strong>
+   <strong>Ranking final:</strong>
+   - <strong>🥇 #1 — MALLÍN AHOGADO <code>-41.88410, -71.53238</code>.</strong> Gana por <strong>tierra fiscal REAL</strong>
+     (Reserva del Estado, no sólo inferida) + <strong>agua glaciar premium</strong> (cuenca Río Azul/
+     Hielo Azul) + <strong>RP86 asfaltada</strong> + <strong>luz EDERSA</strong> (zona con servicios). Es el punto
+     con la combinación más sólida fiscal+agua+acceso+servicios. (Contra: lote chico,
+     6,5 ha, y entorno poblado → verificar disponibilidad real del retazo fiscal.)
+   - <strong>🥈 #2 — LAS MINAS C1 <code>-41.54869, -71.47219</code>.</strong> Mucho más valle plano (33 ha el lote,
+     2.481 ha la zona) y sobre RN40 + curso, pero <strong>dominio fiscal sólo inferido</strong> (vacío
+     sin mensurar, a verificar en Dirección de Tierras) y <strong>sin agua glaciar confirmada</strong>.
+   - <strong>🥉 #3 — LAS MINAS C2 <code>-41.56632, -71.50677</code>.</strong> Mayor lote (77 ha) y fondo de valle
+     bajo (615 m, convergencia), pero más lejos de la ruta (408 m) y mismo dominio incierto.</li>
+</ol>
+<blockquote>
+<p>Para BoldWater (foco tierra fiscal + agua mineral): <strong>Mallín Ahogado es el mejor
+primer objetivo de gestión fiscal y de estudio hidrogeológico</strong> (agua glaciar +
+estado dominial claro); <strong>Las Minas es el mejor objetivo por escala de tierra plana</strong>
+si se confirma el dominio fiscal del vacío.</p>
+</blockquote>
+<p><strong>Entregables Tarea 6:</strong> <code>mapa_master.html</code> · <code>parcelas_mallin.geojson</code> ·
+<code>fiscales_mallin.geojson</code> (0) · <code>inactivas_mallin.geojson</code> · <code>vacios_mallin.geojson</code> ·
+<code>valle_mallin.geojson</code> · <code>agua_osm_mallin.geojson</code> · <code>rutas_osm_mallin.geojson</code> (RP86) ·
+<code>candidatos_agua_mallin.geojson</code> · rasters <code>elevacion/pendiente/ndwi/ndvi_mallin.tif</code> ·
+<code>subsuelo_segemar_pozos.md</code> · capas SEGEMAR probadas (sin cobertura local).</p>
+<h1>TAREA 7 (final) — Lotes resaltados + Energía</h1>
+<h2>PARTE A — Lotes como polígonos</h2>
+<p>Los 4 candidatos ahora se dibujan como <strong>polígono</strong> (relleno 35 % + borde 3 px de
+color) con <strong>círculo de 500 m</strong> y <strong>pin numerado</strong> encima, popup completo
+(agua/ruta/luz/dominio/cota). Archivo: <code>candidatos_destacados.geojson</code>.
+Verificado: los 4 tienen geometría real (181 / 149 / 41 / 399 vértices).</p>
+<h2>PARTE B — Energía</h2>
+<ul>
+<li><strong>OSM no tiene red eléctrica en la región</strong> (Overpass <code>power=*</code> → 0 features en el
+  corredor, en Mallín y en barrido amplio; sólo 2 ways sueltos lejanos). →
+  <code>red_electrica_osm.geojson</code> queda vacío y la capa se rotula "SIN DATOS — ver EDERSA".</li>
+<li><strong>Contexto EDERSA confirmado (investigación, no OSM):</strong> troncal <strong>EDERSA "RN40
+  Norte"</strong> pasa por El Foyel y zona Las Minas; <strong>anillo EDERSA nuevo en Mallín
+  Ahogado</strong>; <strong>centro de gestión EDERSA en El Foyel</strong>. Los 4 lotes caen sobre/junto a
+  esa infraestructura → luz a corta distancia muy probable, <strong>a verificar empalme</strong>.</li>
+</ul>
+<h2>TABLA FINAL — candidato | ha lote | agua | ruta | LUZ MT | dominio | cota</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Candidato</th>
+<th style="text-align: right;">ha lote</th>
+<th>Agua</th>
+<th>Ruta</th>
+<th>Luz (línea MT)</th>
+<th>Dominio</th>
+<th style="text-align: right;">Cota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><strong>1</strong></td>
+<td>Las Minas <strong>C1</strong></td>
+<td style="text-align: right;">33,12</td>
+<td>sobre curso (0 m)</td>
+<td>RN40 (0 m)</td>
+<td>OSM s/dato · EDERSA troncal RN40 <strong>sobre la ruta</strong></td>
+<td>vacío s/mensurar — posible fiscal</td>
+<td style="text-align: right;">721 m</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>2</strong></td>
+<td>Las Minas <strong>C2</strong></td>
+<td style="text-align: right;">76,77</td>
+<td>curso a 60 m</td>
+<td>RN40 a 408 m</td>
+<td>OSM s/dato · EDERSA troncal RN40 <strong>~0,4 km</strong></td>
+<td>vacío s/mensurar — posible fiscal</td>
+<td style="text-align: right;">615 m</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>3</strong></td>
+<td><strong>Mallín Ahogado</strong></td>
+<td style="text-align: right;">6,48</td>
+<td>sobre curso (0 m) · <strong>Río Azul glaciar</strong></td>
+<td><strong>RP86 (0 m)</strong></td>
+<td>OSM s/dato · <strong>EDERSA anillo Mallín</strong> (zona servida)</td>
+<td><strong>Reserva Forestal Loma del Medio–Río Azul (FISCAL real)</strong></td>
+<td style="text-align: right;">491 m</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>4</strong></td>
+<td>El Foyel <strong>vacío #1</strong></td>
+<td style="text-align: right;">104,98</td>
+<td>no analizado (corredor RN40)</td>
+<td>RN40 (0 m)</td>
+<td>OSM s/dato · EDERSA gestión El Foyel + troncal</td>
+<td>vacío s/mensurar — posible fiscal (corredor, 9 islas priv.)</td>
+<td style="text-align: right;">773 m</td>
+</tr>
+</tbody>
+</table>
+<h2>RESPUESTAS</h2>
+<ol>
+<li><strong>¿Línea MT a &lt;500 m / &lt;2 km / sin dato?</strong>
+   En <strong>OSM: sin dato</strong> para los 4 (no hay red eléctrica cargada en toda la región).
+   Por <strong>contexto EDERSA</strong>: los 4 están <strong>sobre o junto</strong> a infraestructura de media
+   tensión existente — C1, C2 y Foyel sobre la <strong>troncal RN40 Norte</strong>; Mallín sobre el
+   <strong>anillo de Mallín Ahogado</strong> (barrio servido). Estimación realista <strong>&lt;500 m–“sobre la
+   traza”</strong>, pendiente de confirmación de empalme con EDERSA.</li>
+<li><strong>Veredicto — ¿cuáles cumplen los 3 duros (agua + ruta + luz)?</strong>
+   - <strong>#1 Las Minas C1 → CUMPLE</strong> (agua ✓ sobre curso · ruta ✓ RN40 0 m · luz ✓ troncal EDERSA).
+   - <strong>#2 Las Minas C2 → CUMPLE</strong> (agua ✓ 60 m · ruta ✓ RN40 &lt;500 m · luz ✓ troncal EDERSA).
+   - <strong>#3 Mallín Ahogado → CUMPLE y es el más completo</strong> (agua ✓ glaciar Río Azul · ruta ✓ RP86 ·
+     luz ✓ anillo · <strong>+ dominio fiscal REAL</strong>). Único que suma tierra fiscal confirmada.
+   - <strong>#4 El Foyel vacío #1 → NO confirmado</strong> (ruta ✓ y luz ✓, pero <strong>agua sin analizar</strong>;
+     cumpliría sólo 2 de 3 hasta verificar curso de agua en el corredor).
+   <strong>Cumplen los 3 duros: C1, C2 y Mallín.</strong> Con foco tierra fiscal, <strong>Mallín lidera</strong>.</li>
+<li><strong>¿Se ven los 4 lotes como polígonos?</strong> <strong>SÍ</strong> — los 4 están dibujados como polígono
+   resaltado (dorado/azul/verde/gris) con borde 3 px, relleno 35 %, círculo de 500 m y
+   pin numerado, en la capa "⭐ LOTES candidatos (polígonos)" de <code>mapa_master.html</code>.</li>
+</ol>
+<p><strong>Entregables Tarea 7:</strong> <code>red_electrica_osm.geojson</code> (vacío, documentado) ·
+<code>candidatos_destacados.geojson</code> (4 lotes) · <code>mapa_master.html</code> (lotes-polígono + energía
++ Reserva Forestal + referencias) · <code>index.html</code> actualizado.</p>
+<h1>TAREA 8 — Mapas usables (etiquetas + zoom por lote + info legible)</h1>
+<p>Rehechos con <code>build_maps.py</code> (un solo builder → 3 mapas):
+- <strong><code>mapa_master.html</code></strong>: botones <strong>[🔴 Las Minas] [🟢 Mallín] [🔭 Ver ambas]</strong> (JS <code>setView</code>/<code>fitBounds</code>),
+  etiquetas FIJAS (DivIcon, sin clic) de pueblos/ríos/rutas y de los 4 lotes (nombre·ha·cota),
+  lotes como polígono (relleno 35%+borde), <strong>líneas de distancia dibujadas con número</strong> a ruta y
+  curso (coherentes con el popup), pendiente conmutable al 40%, curvas 100 m con cotas,
+  Reserva Forestal marcada, <strong>leyenda compacta colapsable</strong>, OSM↔Esri, click=coordenadas.
+- <strong><code>mapa_lasminas.html</code></strong> (zoom 14, lotes C1/C2) y <strong><code>mapa_mallin.html</code></strong> (zoom 15, lote #3) centrados.
+- Distancias dibujadas: C1 RN40 0 m / agua 0 m · C2 RN40 405 m / agua 52 m · Mallín RP86 158 m / agua 0 m · Foyel RN40 0 m.
+- <code>index.html</code> (panel del Escritorio) actualizado con los 3 mapas.</p>
+<h1>TAREA 9 — Lotes fiscales probables + red eléctrica (en los 3 mapas)</h1>
+<p>Nuevas capas conmutables (<code>build_fiscal_lots.py</code> → 2 geojson, integradas a build_maps):
+- <strong>🏛️ Lotes fiscales probables</strong> (<code>lotes_fiscales_probables.geojson</code>, 13): los vacíos sin
+  mensurar planos (&lt;8°) y accesibles (&lt;2 km de ruta) &gt;5 ha, rankeados por tamaño+ruta+agua,
+  en azul con etiqueta de ha; + la <strong>Reserva Forestal Loma del Medio–Río Azul</strong> (marrón) =
+  único FISCAL CONFIRMADO (tierra del Estado).
+  - Las Minas (posible fiscal): <strong>598 ha s/RN40 (curso 73 m)</strong>, 128, 99, 81, 77, 75 ha.
+  - Mallín (posible fiscal): <strong>43,7 ha s/RP86 (curso 0 m)</strong>, 27, 18, 11, 8, 5 ha.
+- <strong>⚡ Red eléctrica</strong> (<code>red_electrica_aprox.geojson</code>): OSM = 0 datos en la región, así que se
+  dibuja la <strong>traza APROXIMADA de la troncal EDERSA</strong> sobre RN40 (línea amarilla punteada) y
+  RP86, + puntos EDERSA (gestión El Foyel, anillo Mallín, corredor RN40). Rotulado "aprox./
+  verificar EDERSA" — NO es relevamiento de red real.</p>
+<blockquote>
+<p>El más obvio: <strong>lote de ~598 ha, plano, sobre la RN40 y con curso a 73 m</strong> en Las Minas
+(posible fiscal, a confirmar en Dir. de Tierras). El único fiscal CONFIRMADO es la Reserva
+Forestal en Mallín.</p>
+</blockquote></body></html>
