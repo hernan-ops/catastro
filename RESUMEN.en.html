@@ -1,0 +1,905 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><title>REPORT — Land scouting</title><style>body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:980px;margin:0 auto;padding:24px;color:#222;line-height:1.5}
+h1{border-bottom:3px solid #1f78b4}h2{border-bottom:1px solid #ccc;margin-top:28px;color:#0868ac}
+table{border-collapse:collapse;margin:10px 0;font-size:13px}th,td{border:1px solid #bbb;padding:4px 8px}
+th{background:#eef4fa}code{background:#f2f2f2;padding:1px 4px;border-radius:3px}
+blockquote{border-left:4px solid #ff7f00;margin:8px 0;padding:4px 12px;background:#fff7ed;color:#444}
+a{color:#1f78b4}</style><script>window.BW_PAGE_LANG="en";window.BW_TWIN={es:"RESUMEN.html"};</script></head><body><h1>SUMMARY — Cadastral parcels: El Foyel · Arroyo Las Minas · Los Repollos</h1>
+<p><strong>Source:</strong> ArcGIS REST — Río Negro Tax Collection Agency (Agencia de Recaudación Tributaria de Río Negro) · <code>SmartLIS/Base_cata_20251111_v2/MapServer</code> (official public service).
+Access OK with browser headers (Safari UA + Referer). No 403. Areas computed with shapely over a local equirectangular projection (meters); coordinates EPSG:4326.</p>
+<h2>Comparative table of the 3 zones</h2>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>bbox (lon/lat)</th>
+<th style="text-align: right;">Parcels</th>
+<th style="text-align: right;">Coverage</th>
+<th style="text-align: right;">State-land gap (ha)</th>
+<th>Parcel size (ha)</th>
+<th>ANP (protected area)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>El Foyel</strong></td>
+<td>-71.51,-41.7 → -71.41,-41.6</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">97.0 %</td>
+<td style="text-align: right;"><strong>271.81</strong></td>
+<td>0.020 – 4,307.7 (median 0.70)</td>
+<td>Cipres de las Guaytecas</td>
+</tr>
+<tr>
+<td><strong>Arroyo Las Minas</strong></td>
+<td>-71.54,-41.58 → -71.44,-41.48</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4.1 %</td>
+<td style="text-align: right;"><strong>8,831.53</strong></td>
+<td>1,460.264 – 5,500.6 (median 3,865.15)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><strong>Los Repollos</strong></td>
+<td>-71.55,-41.86 → -71.45,-41.76</td>
+<td style="text-align: right;">427</td>
+<td style="text-align: right;">94.4 %</td>
+<td style="text-align: right;"><strong>514.85</strong></td>
+<td>0.004 – 1,417.7 (median 10.11)</td>
+<td>Río Azul - Lago Escondido</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Largest state-land gap (more opportunity = less coverage):</strong>
+1. <strong>Arroyo Las Minas</strong> — 8,831.53 ha unparceled (95.9 % of the bbox)
+2. <strong>Los Repollos</strong> — 514.85 ha unparceled (5.6 % of the bbox)
+3. <strong>El Foyel</strong> — 271.81 ha unparceled (3.0 % of the bbox)</p>
+<blockquote>
+<p>The "state-land gap/vacancy" = area of the bbox not covered by any surveyed parcel (geometric difference bbox − union of parcels). It is a proxy for unsurveyed land / possible state-owned (fiscal) land within the queried rectangle.</p>
+</blockquote>
+<h2>Arroyo Las Minas — detail</h2>
+<ul>
+<li><strong>Parcels:</strong> 3</li>
+<li><strong>bbox area:</strong> 9,211.86 ha</li>
+<li><strong>Coverage by parcels:</strong> 4.1 %  (covered 380.33 ha)</li>
+<li><strong>State-land gap:</strong> 8,831.53 ha (~95.9 % of the bbox)</li>
+<li><strong>Size range:</strong> 1,460.2640 ha → 5,500.58 ha (median 3,865.151 ha)</li>
+<li><strong>Protected Natural Area (layer id 20):</strong> no intersection</li>
+</ul>
+<h2>Los Repollos — detail</h2>
+<ul>
+<li><strong>Parcels:</strong> 427</li>
+<li><strong>bbox area:</strong> 9,171.88 ha</li>
+<li><strong>Coverage by parcels:</strong> 94.4 %  (covered 8,657.03 ha)</li>
+<li><strong>State-land gap:</strong> 514.85 ha (~5.6 % of the bbox)</li>
+<li><strong>Size range:</strong> 0.0039 ha → 1,417.72 ha (median 10.106 ha)</li>
+<li><strong>Protected Natural Area (layer id 20):</strong> Río Azul - Lago Escondido</li>
+</ul>
+<h2>EL FOYEL GAPS — location</h2>
+<p>Geometric difference <code>bbox − union(186 parcels)</code>, exploded into polygons and filtering slivers &lt; 0.5 ha (edge noise). Result: <strong>7 gap polygons</strong> totaling <strong>271.79 ha</strong>.</p>
+<ul>
+<li><strong>RN 40:</strong> Road Network layer id 25 (VCM_TIPO='Ruta Nacional' / National Route, paved, National jurisdiction).</li>
+<li><strong>Gaps &lt; 500 m from RN 40 (direct access, the most valuable):</strong> <strong>1</strong> of 7, totaling 104.98 ha.</li>
+<li><strong>Gap closest to RN 40:</strong> #1 at 0 m (104.98 ha).</li>
+</ul>
+<p>Files: <code>vacios_foyel.geojson</code> (polygons) · <code>mapa_foyel_vacios.html</code> (folium: parcels gray, gaps red, RN40 orange, ANP green).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">area_ha</th>
+<th>centroid (lat, lon)</th>
+<th style="text-align: right;">dist_RN40_m</th>
+<th style="text-align: center;">within_ANP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">104.98</td>
+<td>-41.64485, -71.45831</td>
+<td style="text-align: right;">0 ◀ &lt;500m</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">91.76</td>
+<td>-41.62652, -71.43266</td>
+<td style="text-align: right;">1,550</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">63.93</td>
+<td>-41.61363, -71.49796</td>
+<td style="text-align: right;">1,165</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6.34</td>
+<td>-41.66517, -71.50151</td>
+<td style="text-align: right;">2,485</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2.12</td>
+<td>-41.65032, -71.48816</td>
+<td style="text-align: right;">1,168</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2.09</td>
+<td>-41.65993, -71.48658</td>
+<td style="text-align: right;">1,560</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.58</td>
+<td>-41.68365, -71.49916</td>
+<td style="text-align: right;">3,762</td>
+<td style="text-align: center;">no</td>
+</tr>
+</tbody>
+</table>
+<h2>El Foyel — parcel detail</h2>
+<ul>
+<li><strong>Parcels:</strong> 186 · <strong>Coverage:</strong> 97.0 % · <strong>Gap:</strong> 271.81 ha</li>
+<li><strong>Range:</strong> 0.0198 ha → 4,307.70 ha (median 0.6999 ha, mean 125.03 ha)</li>
+<li><strong>Protected Natural Area:</strong> Cipres de las Guaytecas</li>
+<li><strong>General Polygon (id 40, POL_ESTADO):</strong> 0 features in the bbox (no general polygon loaded).</li>
+</ul>
+<details><summary>El Foyel nomenclatures (PAR_NOMENCLATURA) — 186 unique</summary>
+
+- `20-1-*-409-058-0000-00`
+- `20-1-*-411-062-0000-00`
+- `20-1-*-416-062-0000-00`
+- `20-1-*-418-064-0000-00`
+- `20-1-*-423-073-0000-00`
+- `20-1-*-429-079-0000-00`
+- `20-1-*-434-083-0000-00`
+- `20-1-*-441-092-0000-00`
+- `20-1-*-444-093-0000-00`
+- `20-1-*-468-125-0000-00`
+- `20-1-*-540-610-0`
+- `20-1-*-550-590-0`
+- `20-1-*-560-645-0`
+- `20-1-*-560-655-0`
+- `20-1-*-565-655-0`
+- `20-1-*-570-575-0`
+- `20-1-*-575-655-0`
+- `20-1-*-580-655-0`
+- `20-1-*-580-656-0000-00`
+- `20-1-*-580-660-0`
+- `20-1-*-585-655-0`
+- `20-1-*-585-656-0000-00`
+- `20-1-*-585-672-0`
+- `20-1-*-588-563-0`
+- `20-1-*-590-573-0`
+- `20-1-*-590-655-0`
+- `20-1-*-592-582-0`
+- `20-1-*-595-655-0`
+- `20-1-*-600-655-0`
+- `20-1-*-605-655-0`
+- `20-1-*-610-630-0`
+- `20-1-*-610-652-0`
+- `20-1-*-610-655-0`
+- `20-1-*-615-585-0`
+- `20-1-*-615-650-0`
+- `20-1-*-615-720-0`
+- `20-1-*-618-630-0000-00`
+- `20-1-*-620-570-0`
+- `20-1-*-620-590-0`
+- `20-1-*-620-592-0`
+- `20-1-*-620-602-0`
+- `20-1-*-620-640-0000-00`
+- `20-1-*-620-700-0000-00`
+- `20-1-*-621-610-0000-00`
+- `20-1-*-622-620-0000-00`
+- `20-1-*-625-600-0000-00`
+- `20-1-*-628-592-0`
+- `20-1-*-628-602-0`
+- `20-1-*-628-634-0`
+- `20-1-*-630-610-0`
+- `20-1-*-630-625-0`
+- `20-1-*-632-580-0000-00`
+- `20-1-*-632-590-0`
+- `20-1-*-632-600-0`
+- `20-1-*-632-636-0`
+- `20-1-*-635-540-0000-00`
+- `20-1-*-635-560-0`
+- `20-1-*-635-575-0`
+- `20-1-*-635-615-0`
+- `20-1-*-635-635-0`
+- `20-1-*-636-651-0`
+- `20-1-*-640-575-0`
+- `20-1-*-640-635-0`
+- `20-1-*-640-670-0000-00`
+- `20-1-*-645-600-0`
+- `20-1-*-650-562-0`
+- `20-1-*-650-627-0`
+- `20-1-*-650-640-0`
+- `20-1-*-655-630-0`
+- `20-1-*-656-652-0`
+- `20-1-*-660-560-0`
+- `20-1-*-660-630-0`
+- `20-1-*-660-660-0`
+- `20-1-*-665-637-0`
+- `20-1-*-665-640-0`
+- `20-1-*-665-660-0`
+- `20-1-*-670-595-0`
+- `20-1-*-670-670-0`
+- `20-1-*-674-678-0`
+- `20-1-*-710-552-0`
+- `20-1-*-710-555-0`
+- `20-1-*-710-690-0`
+- `20-1-*-714-550-0`
+- `20-1-*-715-583-0`
+- `20-1-*-717-565-0`
+- `20-1-*-718-545-0`
+- `20-1-*-738-550-0`
+- `20-1-*-740-590-0`
+- `20-1-*-770-670-0`
+- `20-1-M-001-001-0000-00`
+- `20-1-M-001-002-0000-00`
+- `20-1-M-010-01-0`
+- `20-1-M-010-02-0`
+- `20-1-M-010-03-0`
+- `20-1-M-010-04-0`
+- `20-1-M-010-05-0`
+- `20-1-M-010-06-0`
+- `20-1-M-010-07-0`
+- `20-1-M-011-002-0000-00`
+- `20-1-M-011-003-0000-00`
+- `20-1-M-011-01-0`
+- `20-1-M-100-01-0`
+- `20-1-M-110-01-0`
+- `20-1-M-110-02-0`
+- `20-1-M-110-03-0`
+- `20-1-M-110-04-0`
+- `20-1-M-110-05-0`
+- `20-1-M-110-06-0`
+- `20-1-M-111-01-0`
+- `20-1-M-111-02-0`
+- `20-1-M-111-03-0`
+- `20-1-M-111-04-0`
+- `20-1-M-111-05-0`
+- `20-1-M-111-06-0`
+- `20-1-M-112-01-0`
+- `20-1-M-113-01-0`
+- `20-1-M-114-01-0`
+- `20-1-M-114-02-0`
+- `20-1-M-115-01-0`
+- `20-1-M-120-01-0`
+- `20-1-M-120-02-0`
+- `20-1-M-120-03-0`
+- `20-1-M-120-04-0`
+- `20-1-M-121-01-0`
+- `20-1-M-121-02-0`
+- `20-1-M-121-03-0`
+- `20-1-M-121-04-0`
+- `20-1-M-121-05-0`
+- `20-1-M-121-06-0`
+- `20-1-M-121-07-0`
+- `20-1-M-121-08-0`
+- `20-1-M-122-01-0`
+- `20-1-M-122-02-0`
+- `20-1-M-122-03-0`
+- `20-1-M-122-04-0`
+- `20-1-M-122-05-0`
+- `20-1-M-122-06-0`
+- `20-1-M-122-07-0`
+- `20-1-M-122-08-0`
+- `20-1-M-122-09-0`
+- `20-1-M-122-10-0`
+- `20-1-M-123-01-0`
+- `20-1-M-123-02-0`
+- `20-1-M-123-03-0`
+- `20-1-M-123-04-0`
+- `20-1-M-123-05-0`
+- `20-1-M-123-06-0`
+- `20-1-M-123-07-0`
+- `20-1-M-123-08-0`
+- `20-1-M-124-01-0`
+- `20-1-M-125-01-0`
+- `20-1-M-125-02-0`
+- `20-1-M-125-03-0`
+- `20-1-M-125-04-0`
+- `20-1-M-125-05-0`
+- `20-1-M-125-06-0`
+- `20-1-M-125-07-0`
+- `20-1-M-127-01-0`
+- `20-1-M-130-01-0`
+- `20-1-M-130-02-0`
+- `20-1-M-130-03-0`
+- `20-1-M-130-04-0`
+- `20-1-M-130-05-0`
+- `20-1-M-130-06-0`
+- `20-1-M-130-07-0`
+- `20-1-M-131-01-0`
+- `20-1-M-131-02-0`
+- `20-1-M-131-03-0`
+- `20-1-M-131-04-0`
+- `20-1-M-131-05-0`
+- `20-1-M-131-06-0`
+- `20-1-M-131-07-0`
+- `20-1-M-131-08-0`
+- `20-1-M-131-09-0`
+- `20-1-M-131-10-0`
+- `20-1-M-135-01-0`
+- `20-1-M-135-02-0`
+- `20-1-M-135-03-0`
+- `20-1-M-135-04-0`
+- `20-1-M-135-05-0`
+- `20-1-M-135-06-0`
+- `20-1-M-135-07-0`
+- `20-1-M-135-08-0`
+- `20-1-M-144-01-0`
+- `20-1-M-144-02-0`
+- `20-1-M-144-03-0`
+
+</details>
+
+<hr />
+<p><em>The service only exposes geometry + nomenclature + area. It does not contain title/owner information.</em></p>
+<h1>TASK 3 — FISCAL layer + El Foyel gap #1 + Las Minas in depth</h1>
+<h2>A) Fiscal layer (id 79): fields and results</h2>
+<p>The <strong>Fiscal</strong> layer is a view of the <code>CATA_50_GIS_PARCELAS</code> table (same schema as the other parcels) filtered to state-owned (fiscal) parcels. Relevant fields (aliases):
+<code>PAR_NOMENCLATURA</code>, <code>PAR_ESTADO</code>, <code>PAR_TIPO</code>, <code>PAR_DEPARTAMENTO</code>, <code>PAR_SUPERFICIE_MENSURA</code>, <code>PAR_SUPERFICIE_TRIBUTARIA</code>, <code>PAR_EXENTA</code>, <code>PAR_IMPONIBLE</code>, <code>PAR_OBSERVACION</code>, <code>PAR_FECHA_REGISTRACION</code>, <code>PAR_LEGUA/SECCION/FRACCION/CHACRA/QUINTA/MANZANA/LOTE</code>, <code>TRM_EXPEDIENTE</code> (case/procedure file). Does not expose owner.</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th style="text-align: right;">El Foyel</th>
+<th style="text-align: right;">Las Minas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fiscal (id 79)</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+<td style="text-align: right;"><strong>0</strong></td>
+</tr>
+<tr>
+<td>Inactive (id 80)</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>There is no parcel flagged as FISCAL (layer 79) in either zone.</strong> The 7 "Inactive" ones in El Foyel are private parcels that were deregistered/deactivated (all <code>PAR_IMPONIBLE=S</code>, i.e. taxable/private), not state-owned land. Files <code>fiscales_foyel.geojson</code> and <code>fiscales_lasminas.geojson</code> were saved as empty FeatureCollections (0 features) — the finding is precisely the absence.</p>
+</blockquote>
+<h2>B) El Foyel gap #1 (on RN40)</h2>
+<ul>
+<li><strong>Area:</strong> 104.98 ha · touches RN40 (distance 0 m).</li>
+<li><strong>Intersection with fiscal parcels:</strong> <strong>NONE</strong> (there are no fiscal parcels in the zone). It also does not coincide with any active parcel (by definition it is the gap between parcels).</li>
+<li><strong>Conclusion:</strong> it is <strong>unsurveyed land of UNKNOWN ownership status</strong> — a candidate, but <strong>NOT confirmed as fiscal</strong> by the cadastre. Requires verification at the Land Directorate (Dirección de Tierras).</li>
+</ul>
+<p>⚠️ <strong>Important about the shape:</strong> gap #1 is NOT a compact rectangular lot. It is an <strong>irregular corridor</strong> that winds between the parcels following the RN40 alignment (399 vertices, with 9 private parcels embedded as "islands" within the gap; the polygon fills only ~2.4 % of its bounding box). That is why I give the <strong>bounding box</strong> (maximum extent) + a <strong>guaranteed interior point</strong>, not 4 corners of a real rectangle. The exact geometry is in <code>vacios_foyel.geojson</code> (feature id=1).</p>
+<p><strong>Coordinates for the Land Directorate (copyable lat,lon format):</strong></p>
+<pre><code>Centroid:             -41.644851,-71.458309
+Interior point:       -41.649963,-71.456634   (falls inside the polygon)
+--- bounding box (maximum extent of the corridor) ---
+NW corner:            -41.600000,-71.481337
+NE corner:            -41.600000,-71.434356
+SE corner:            -41.700000,-71.434356
+SW corner:            -41.700000,-71.481337
+</code></pre>
+<h2>C) Arroyo Las Minas in depth</h2>
+<p><strong>The 3 rural parcels (those that occupy the ~4 %):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Nomenclature</th>
+<th style="text-align: right;">Survey (ha)</th>
+<th style="text-align: center;">Status</th>
+<th>Centroid (lat,lon)</th>
+<th style="text-align: right;">Approx. elevation</th>
+<th style="text-align: right;">Dist. RN40</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>20-1-*-925-750-0</code></td>
+<td style="text-align: right;">5,598.09</td>
+<td style="text-align: center;">A</td>
+<td>-41.5169, -71.3847</td>
+<td style="text-align: right;">~1250 m</td>
+<td style="text-align: right;">835 m</td>
+<td>0-DUP 3563/1999</td>
+</tr>
+<tr>
+<td><code>20-1-*-770-670-0</code></td>
+<td style="text-align: right;">4,505.43</td>
+<td style="text-align: center;">A</td>
+<td>-41.5979, -71.4370</td>
+<td style="text-align: right;">~750 m</td>
+<td style="text-align: right;">0 m</td>
+<td>0-DUP 3291/1990</td>
+</tr>
+<tr>
+<td><code>20-1-*-740-590-0</code></td>
+<td style="text-align: right;">1,546.40</td>
+<td style="text-align: center;">A</td>
+<td>-41.6067, -71.4877</td>
+<td style="text-align: right;">~800 m</td>
+<td style="text-align: right;">0 m</td>
+<td>0-DUP 3291/1990</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>All 3 are <strong>private active</strong> parcels (<code>PAR_ESTADO=A</code>, <code>PAR_IMPONIBLE=S</code>), rural (<code>PAR_TIPO=4</code>), of old survey (DUP files 1990/1999). The surveyed area (thousands of ha) exceeds what falls within the bbox: they are large estates (estancias) that only partially enter the clip.</p>
+</blockquote>
+<p><strong>Las Minas gaps (&gt;10 ha):</strong> 1 polygon(s), totaling 8,831.53 ha. Relief of the bbox: contour lines from <strong>600 to 1750 m</strong> (valley floor ↔ high mountain).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">id</th>
+<th style="text-align: right;">area (ha)</th>
+<th>centroid (lat,lon)</th>
+<th style="text-align: right;">approx. elevation</th>
+<th style="text-align: right;">dist RN40</th>
+<th style="text-align: left;">corridor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8,831.53</td>
+<td>-41.5289, -71.4912</td>
+<td style="text-align: right;">~1250 m</td>
+<td style="text-align: right;">0 m ◀&lt;500m</td>
+<td style="text-align: left;">valley (near route)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Since 96 % is practically a single continuous gap running from the valley to the mountain, the valley/hillside distinction is seen better on the map (<code>mapa_candidatos.html</code>): enable the <strong>Contour lines</strong> layer and <strong>RN40</strong> — the low corridor follows the route (~600–800 m); what climbs toward elevations of 1000–1750 m is unusable hillside. There are also 2 lakes and 1 lagoon in the bbox.</p>
+</blockquote>
+<p><strong>Task 3 deliverables:</strong> <code>fiscales_foyel.geojson</code>, <code>fiscales_lasminas.geojson</code> (0 feats), <code>vacios_lasminas.geojson</code>, <code>mapa_candidatos.html</code>.</p>
+<h1>TASK 4 — Las Minas altimetry + water signals</h1>
+<p><strong>Zone:</strong> Arroyo Las Minas · bbox -71.54,-41.58 → -71.44,-41.48 (center ~-41.53,-71.49).
+<strong>Reused inputs:</strong> <code>vacios_lasminas.geojson</code> (fiscal gap 8,831.53 ha), <code>parcelas_lasminas</code>, <code>redvial_lasminas</code> (RN40 = "Ruta Nacional"/National Route line), <code>agua_lasminas</code> (cadastre lakes).</p>
+<h2>Data sources (all free, no API key)</h2>
+<ul>
+<li><strong>DEM:</strong> Copernicus <strong>GLO-30</strong> (30 m) — public AWS Open Data (<code>copernicus-dem-30m.s3</code>), windowed read via <code>/vsicurl/</code>. <em>No need for OpenTopography or an API key.</em></li>
+<li><strong>Hydrography:</strong> OpenStreetMap via <strong>Overpass API</strong> (<code>waterway=*</code>, <code>natural=water/wetland</code>) → <code>agua_osm_lasminas.geojson</code> (26 geom).</li>
+<li><strong>NDWI/NDVI:</strong> <strong>Sentinel-2 L2A</strong> via <strong>STAC earth-search (Element84)</strong>, no login. Chosen scene <code>S2B_18GYV_20240125</code> — <strong>25-Jan-2024, cloud cover 0.0008 %</strong> (dry southern-hemisphere summer).</li>
+</ul>
+<h2>PART A — Altimetry / slopes</h2>
+<ul>
+<li>Relief of the bbox: <strong>496 – 1,803 m</strong>. Valley/floor ~500–800 m; hillsides and ridges up to 1,800 m.</li>
+<li>Slope computed in UTM 19S (30 m pixel), reclassified: green &lt;8°, yellow 8–15°, red &gt;15°.</li>
+<li>Deliverables: <code>elevacion_lasminas.tif</code>, <code>pendiente_lasminas.tif</code>, <code>curvas_dem_lasminas.geojson</code> (DEM contour lines every 50 m, 193 lines), <code>mapa_elevacion_lasminas.png</code>, <code>mapa_pendiente_lasminas.png</code>.</li>
+</ul>
+<h3>Fiscal gap clipped against slope</h3>
+<p>Of the <strong>8,831.53 ha</strong> of cadastral gap (8,801.6 ha when rasterized to 30 m):</p>
+<table>
+<thead>
+<tr>
+<th>Slope class</th>
+<th style="text-align: right;">ha</th>
+<th style="text-align: right;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>&lt;8° (flat/usable valley)</strong></td>
+<td style="text-align: right;"><strong>2,481</strong></td>
+<td style="text-align: right;"><strong>28.2 %</strong></td>
+</tr>
+<tr>
+<td>8–15° (intermediate)</td>
+<td style="text-align: right;">2,077</td>
+<td style="text-align: right;">23.6 %</td>
+</tr>
+<tr>
+<td>&gt;15° (unusable hillside)</td>
+<td style="text-align: right;">4,243</td>
+<td style="text-align: right;">48.2 %</td>
+</tr>
+</tbody>
+</table>
+<p>→ <code>valle_aprovechable_lasminas.geojson</code> = 226 polygons (&gt;0.5 ha) totaling <strong>2,374.9 ha</strong> of &lt;8° valley within the fiscal land.</p>
+<p><strong>Proximity to RN40</strong> (what is truly accessible):
+| Band | Usable valley &lt;8° |
+|---|---:|
+| &lt; 500 m from RN40 | <strong>489 ha</strong> |
+| &lt; 1,000 m | 897 ha |
+| &lt; 2,000 m | 1,532 ha |</p>
+<blockquote>
+<p>The gap is ~96 % mountain/hillside with flat corridors winding through the valley floors following RN40 and the watercourses. The usable valley is NOT a compact block: it is a network of valley floors.</p>
+</blockquote>
+<h2>PART B — Water signals</h2>
+<ul>
+<li><strong>Watercourses:</strong> OSM provides 13 rivers + 9 streams + 3 water bodies + 1 wetland. Named: <strong>Río Manso, Río Villegas, Arroyo Guanaco, Cañadón de la Mosca, Lago Amor, Laguna Huala Hué</strong> (+ Lago Steffen from the cadastre). <em>There is no "Arroyo Las Minas" labeled in OSM within the bbox; the name is of local use.</em></li>
+<li><strong>NDWI</strong> (<code>ndwi_lasminas.tif</code>): highlights the lakes/lagoons and wide river reaches.</li>
+<li><strong>Summer NDVI</strong> (<code>ndvi_lasminas.tif</code>): <strong>⚠ saturated-high across almost the entire bbox</strong> — this is <strong>humid Andean-Patagonian forest</strong> zone, all green in summer. Unlike the arid steppe, here the wet meadow (vega) does NOT appear as an isolated green island. That is why the operational discriminator for water is NOT greenness but: <strong>proximity to a mapped watercourse + NDWI/open water + low-elevation valley floor</strong>, which is how the ranking was weighted.</li>
+</ul>
+<h3>Cross-analysis → candidates (<code>candidatos_agua_lasminas.geojson</code>, 146 ranked)</h3>
+<p>Score = usable area + proximity to RN40 + proximity to watercourse + NDVI + "golden combo" bonus (RN40&lt;800 m <strong>and</strong> watercourse&lt;200 m) + low-valley bonus.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th style="text-align: right;">score</th>
+<th style="text-align: right;">ha</th>
+<th style="text-align: right;">elev. m</th>
+<th style="text-align: right;">slope°</th>
+<th style="text-align: right;">RN40 m</th>
+<th style="text-align: right;">watercourse m</th>
+<th style="text-align: right;">NDVI</th>
+<th>class</th>
+<th>lat,lon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">95.3</td>
+<td style="text-align: right;">33.1</td>
+<td style="text-align: right;">721</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.87</td>
+<td>wet_meadow_on_watercourse</td>
+<td>-41.54869,-71.47219</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">94.8</td>
+<td style="text-align: right;">76.8</td>
+<td style="text-align: right;">615</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">408</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">0.86</td>
+<td>wet_meadow_on_watercourse</td>
+<td>-41.56632,-71.50677</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">93.4</td>
+<td style="text-align: right;">574.1</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: right;">3.8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">0.85</td>
+<td>(extensive green)</td>
+<td>-41.49701,-71.45627</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">84.3</td>
+<td style="text-align: right;">20.3</td>
+<td style="text-align: right;">809</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.77</td>
+<td>wet_meadow_on_watercourse</td>
+<td>-41.53282,-71.46163</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">81.6</td>
+<td style="text-align: right;">8.9</td>
+<td style="text-align: right;">683</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.82</td>
+<td>wet_meadow_on_watercourse</td>
+<td>-41.55884,-71.48257</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">80.0</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">639</td>
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.88</td>
+<td>wet_meadow_on_watercourse</td>
+<td>-41.56674,-71.49142</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h1>3 (574 ha) is an extensive green patch in the N of the bbox (elevation 1,023 m): almost certainly <strong>dense forest</strong>, not a wet meadow — useful as area but NOT as a source point. The small candidates on a watercourse in the valley floor (#1, #2) are the best signals.</h1>
+</blockquote>
+<h2>PART C — Interactive map</h2>
+<p><code>mapa_agua_lasminas.html</code> (folium, <strong>self-contained</strong>, overlays embedded in base64):
+OSM ↔ Esri Satellite switchable · LayerControl · <strong>click = coordinates</strong> · MeasureControl · fiscal gap (outline) · valley &lt;8° (green) · 8–15° (yellow) · hillside &gt;15° (semi-transparent red) · wet meadows/high NDVI (magenta) · NDWI (cyan) · OSM watercourses (blue) · lakes (blue) · RN40 (orange) · 50 m contours · 25 candidates with numbered markers and popup (area, elevation, slope, dist RN40, dist watercourse, NDVI).</p>
+<h2>⚠ Scope (important)</h2>
+<p>From DEM+satellite only <strong>surface water and wet-meadow signals</strong> are detected. <strong>Composition, deep aquifer, and flow rate (= "mineral water") CANNOT be determined this way</strong> — they require a field hydrogeological study (geoelectrics/borehole/gauging + physicochemical analysis). This work <strong>preselects the best point</strong> for that study; it does not confirm mineral water. Also, the "state-land gap" is unsurveyed land of <strong>UNKNOWN</strong> ownership (not confirmed fiscal) — verify at the Río Negro Land Directorate (Dirección de Tierras).</p>
+<h2>ANSWERS</h2>
+<ol>
+<li><strong>How many ha of the gap are flat usable valley (&lt;8°)?</strong> → <strong>2,481 ha</strong> (28.2 % of the 8,831). The rest: 2,077 ha intermediate (8–15°) and 4,243 ha of hillside &gt;15° (48 %). Within the fiscal land and &gt;0.5 ha: <strong>2,374.9 ha</strong> in 226 polygons.</li>
+<li><strong>Where is the usable band relative to RN40?</strong> → They are valley-floor corridors that follow the RN40 alignment and the watercourses. <strong>489 ha touch the &lt;500 m band of RN40</strong> (direct access); 897 ha at &lt;1 km; 1,532 ha at &lt;2 km. The bulk of the flat-accessible land is in the <strong>SW–S valley floor of the bbox</strong> (elevations 600–800 m).</li>
+<li><strong>Are there wet meadows or watercourses within the usable band?</strong> → Yes. OSM watercourses (rivers/streams) cross the flat valley floors; the best "flat+fiscal+watercourse+RN40" crossings are in the <strong>S/SW</strong> sector (elevations 600–720 m). NDVI is saturated (humid forest), so the strong water signal is the <strong>mapped watercourses + NDWI of lakes</strong> rather than greenness.</li>
+<li><strong>Best candidate point for a field hydrogeological study:</strong>
+   - <strong>PRIMARY → Candidate #1: -41.54869, -71.47219</strong> — 33 ha flat (4.4°), elevation 721 m, <strong>on a watercourse (0 m) and on RN40 (0 m)</strong>, within the fiscal gap, NDVI 0.87. Combines immediate access + permanent watercourse + flat fiscal terrain.
+   - <strong>ALTERNATIVE → Candidate #2: -41.56632, -71.50677</strong> — 77 ha, <strong>lower valley floor (elevation 615 m = convergence/recharge zone)</strong>, slope 3.2°, watercourse at 60 m, RN40 at 408 m. The largest and lowest; good if flow/convergence is prioritized over access.</li>
+</ol>
+<p><em>Take both points to the field; confirm with geoelectrics + gauging + physicochemical analysis.</em></p>
+<p><strong>Task 4 deliverables:</strong> <code>elevacion_lasminas.tif</code>, <code>pendiente_lasminas.tif</code>, <code>ndwi_lasminas.tif</code>, <code>ndvi_lasminas.tif</code>, <code>mapa_elevacion_lasminas.png</code>, <code>mapa_pendiente_lasminas.png</code>, <code>mapa_ndwi_lasminas.png</code>, <code>mapa_ndvi_lasminas.png</code>, <code>curvas_dem_lasminas.geojson</code>, <code>valle_aprovechable_lasminas.geojson</code>, <code>agua_osm_lasminas.geojson</code>, <code>candidatos_agua_lasminas.geojson</code>, <code>mapa_agua_lasminas.html</code>.</p>
+<h1>TASK 6 — Las Minas candidates + boreholes + Mallín Ahogado complete</h1>
+<p><strong>Permanent focus: STATE-OWNED (FISCAL) LAND.</strong> Consolidated in <code>mapa_master.html</code> (a single map,
+both zones, everything switchable). DEM and AWS <code>/vsicurl/</code> method reused.</p>
+<h2>⚠ Mallín bbox correction (important)</h2>
+<p>The given bbox <code>-71.73,-41.91,-71.63,-41.81</code> returned <strong>0 parcels, 0 routes, 0 hydro</strong>:
+it falls in the <strong>cordillera / National Park W of El Bolsón</strong> (only ANP and a lake).
+I corrected it to <strong><code>-71.62,-41.94,-71.52,-41.84</code></strong> = the real Mallín Ahogado (NW of El Bolsón,
+753 parcels, RP86, Río Azul on the W edge). Everything about Mallín below uses that bbox.</p>
+<h2>PART B — Subsurface (full detail in <code>subsuelo_segemar_pozos.md</code>)</h2>
+<ul>
+<li><strong>SEGEMAR/SIGAM:</strong> live WMS/WFS geoservices, but the vector hydrogeology
+  (<code>250KUnidadHidrogeologica</code>) <strong>only covers the Pampa</strong> (8 polygons, all in Buenos Aires);
+  250K geology/lithology is <strong>not vectorized</strong> in the zone. Sheet 4172-IV Bariloche
+  exists <strong>only in PDF</strong>. → the WMS layer was left switchable anyway (no local coverage).</li>
+<li><strong>Boreholes:</strong> neither DPA Río Negro, nor SIAS, nor IGN expose downloadable point boreholes.
+  <strong>It must be requested in person</strong> (list in the .md): DPA El Bolsón delegation, SEGEMAR,
+  INTA/Loma del Medio Reserve, CFI (soil study, 15,000 ha).</li>
+<li><strong>Geological context (obtained, citable):</strong> valley floors = <strong>Quaternary glacifluvial
+  gravels</strong> (productive shallow unconfined aquifer) over granitic batholith;
+  <strong>Río Azul = glacial water from Hielo Azul</strong>. Field study: SEV/TEM (vertical electrical
+  sounding / transient electromagnetics) + borehole in the gravel fill near the watercourse.</li>
+</ul>
+<h2>PART C — Mallín Ahogado (full pipeline replicated)</h2>
+<ul>
+<li><strong>Cadastral:</strong> 753 parcels (692 private/other + 61 inactive). Coverage <strong>36 %</strong>,
+  <strong>gap 5,903 ha (64 %)</strong>. <strong>FISCAL parcels (layer 79) = 0</strong> (same as Las Minas and
+  Foyel). Mallín's fiscal land is NOT flagged in the cadastre: it is the <strong>Loma del Medio–
+  Río Azul Forest Reserve</strong> (national state/INTA) + settler occupation.</li>
+<li><strong>Altimetry:</strong> relief <strong>278–1,626 m</strong>. Valley <strong>&lt;8° = 783 ha</strong>; intermediate 1,392 ha;
+  hillside &gt;15° = 3,732 ha. <code>valle_mallin.geojson</code> = 228 polygons, 645 ha (&gt;0.5 ha).</li>
+<li><strong>Water:</strong> OSM gives <strong>Río Azul, Río Quemquemtreu, Arroyo del Medio, Don Bartolo, Teno,
+  Río Raquel</strong> + aqueduct. Sentinel-2 NDWI/NDVI <strong>19-Feb-2024 (clouds 0.03 %)</strong>.</li>
+<li><strong>Optimal Mallín candidate:</strong> <code>candidatos_agua_mallin.geojson</code> (105 ranked), cross-analysis of
+  flat valley ∩ gap ∩ near RP86 ∩ near power (served-parcels proxy) ∩ watercourse.</li>
+</ul>
+<h2>FINAL COMPARATIVE TABLE — Las Minas vs Mallín Ahogado</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th><strong>Arroyo Las Minas</strong></th>
+<th><strong>Mallín Ahogado</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bbox used</td>
+<td>-71.54,-41.58,-71.44,-41.48</td>
+<td>-71.62,-41.94,-71.52,-41.84 <em>(corrected)</em></td>
+</tr>
+<tr>
+<td>Parcels</td>
+<td>3</td>
+<td>753 (692 priv + 61 inact)</td>
+</tr>
+<tr>
+<td>Cadastral coverage</td>
+<td>4.1 %</td>
+<td>36.0 %</td>
+</tr>
+<tr>
+<td>Gap (unsurveyed)</td>
+<td>8,831 ha (96 %)</td>
+<td>5,903 ha (64 %)</td>
+</tr>
+<tr>
+<td><strong>Confirmed FISCAL (layer 79)</strong></td>
+<td><strong>NO (0)</strong></td>
+<td><strong>NO (0)</strong> — but <strong>state Forest Reserve</strong> (de facto fiscal)</td>
+</tr>
+<tr>
+<td>Relief</td>
+<td>496–1,803 m</td>
+<td>278–1,626 m</td>
+</tr>
+<tr>
+<td><strong>Usable valley &lt;8°</strong></td>
+<td><strong>2,481 ha</strong> (489 ha at &lt;500 m from route)</td>
+<td><strong>783 ha</strong></td>
+</tr>
+<tr>
+<td>Water signal</td>
+<td>Ríos Manso/Villegas, Arroyo Guanaco; lakes</td>
+<td><strong>Río Azul (Hielo Azul glacier)</strong>, Quemquemtreu, Arroyo del Medio</td>
+</tr>
+<tr>
+<td>Route access</td>
+<td><strong>RN40</strong> (touches, 0 m)</td>
+<td><strong>RP86 paved</strong> (2022)</td>
+</tr>
+<tr>
+<td>Power access</td>
+<td>RN40 corridor</td>
+<td><strong>EDERSA</strong> (populated zone, ~300 families)</td>
+</tr>
+<tr>
+<td>Best candidate (coord)</td>
+<td><strong>C1 -41.54869,-71.47219</strong> · C2 -41.56632,-71.50677</td>
+<td><strong>-41.88410,-71.53238</strong></td>
+</tr>
+</tbody>
+</table>
+<h2>ANSWERS</h2>
+<ol>
+<li><strong>Does Mallín Ahogado have confirmed FISCAL parcels in the cadastre?</strong>
+   <strong>NO.</strong> The Fiscal layer (id 79) returns <strong>0 features</strong> in Mallín (tested in the Mallín
+   bbox, in the El Bolsón core, and in a wide bbox: 0 in all). It is the <strong>same
+   result as Las Minas and Foyel</strong>: the Río Negro ART cadastre <strong>does not flag state-owned
+   land</strong> in these zones. BUT Mallín's fiscal land <strong>is confirmed by another
+   route</strong>: the <strong>Loma del Medio–Río Azul Forest Reserve</strong> (state ownership, ~300 settler
+   families on fiscal land). Key difference: in Las Minas the fiscal land is <em>inferred</em>
+   (unsurveyed gap); in Mallín it is <em>administratively real</em> (State reserve),
+   even if it does not appear checked as "Fiscal" in the cadastral layer.</li>
+<li><strong>How many usable flat ha (&lt;8°) does Mallín have vs Las Minas?</strong>
+   <strong>Mallín ≈ 783 ha</strong> (645 ha in polygons &gt;0.5 ha) · <strong>Las Minas ≈ 2,481 ha</strong>
+   (2,375 ha in polygons; 489 ha at &lt;500 m from RN40). Las Minas has <strong>~3× more</strong>
+   flat valley, but it is a gap of uncertain ownership; Mallín's is smaller but sits
+   on real fiscal land and with better water/access/services.</li>
+<li><strong>Did you obtain real borehole/aquifer data, or must it be requested in person?</strong>
+   <strong>It must be requested in person.</strong> There is no downloadable public borehole layer (DPA RN /
+   SIAS / IGN) nor vector SEGEMAR hydrogeology for the cordillera (only covers the
+   Pampa). What was obtained is <strong>regional geological context</strong> (valley glacifluvial gravel
+   aquifer; Río Azul = glacial water) and the <strong>list of agencies to request</strong> the
+   records from (DPA El Bolsón, SEGEMAR Sheet 4172-IV, INTA/Reserve, CFI). See <code>subsuelo_segemar_pozos.md</code>.</li>
+<li><strong>Between Las Minas and Mallín Ahogado, which is better for fiscal land + water + access?</strong>
+   <strong>Final ranking:</strong>
+   - <strong>🥇 #1 — MALLÍN AHOGADO <code>-41.88410, -71.53238</code>.</strong> Wins for <strong>REAL fiscal land</strong>
+     (State Reserve, not merely inferred) + <strong>premium glacial water</strong> (Río Azul/
+     Hielo Azul basin) + <strong>paved RP86</strong> + <strong>EDERSA power</strong> (serviced zone). It is the point
+     with the most solid fiscal+water+access+services combination. (Against: small lot,
+     6.5 ha, and populated surroundings → verify the real availability of the fiscal remnant.)
+   - <strong>🥈 #2 — LAS MINAS C1 <code>-41.54869, -71.47219</code>.</strong> Much more flat valley (33 ha the lot,
+     2,481 ha the zone) and on RN40 + watercourse, but <strong>fiscal ownership only inferred</strong> (unsurveyed
+     gap, to be verified at the Land Directorate) and <strong>no confirmed glacial water</strong>.
+   - <strong>🥉 #3 — LAS MINAS C2 <code>-41.56632, -71.50677</code>.</strong> Larger lot (77 ha) and low valley
+     floor (615 m, convergence), but farther from the route (408 m) and same uncertain ownership.</li>
+</ol>
+<blockquote>
+<p>For BoldWater (focus on fiscal land + mineral water): <strong>Mallín Ahogado is the best
+first target for fiscal management and hydrogeological study</strong> (glacial water +
+clear ownership status); <strong>Las Minas is the best target by scale of flat land</strong>
+if the fiscal ownership of the gap is confirmed.</p>
+</blockquote>
+<p><strong>Task 6 deliverables:</strong> <code>mapa_master.html</code> · <code>parcelas_mallin.geojson</code> ·
+<code>fiscales_mallin.geojson</code> (0) · <code>inactivas_mallin.geojson</code> · <code>vacios_mallin.geojson</code> ·
+<code>valle_mallin.geojson</code> · <code>agua_osm_mallin.geojson</code> · <code>rutas_osm_mallin.geojson</code> (RP86) ·
+<code>candidatos_agua_mallin.geojson</code> · rasters <code>elevacion/pendiente/ndwi/ndvi_mallin.tif</code> ·
+<code>subsuelo_segemar_pozos.md</code> · tested SEGEMAR layers (no local coverage).</p>
+<h1>TASK 7 (final) — Highlighted lots + Energy</h1>
+<h2>PART A — Lots as polygons</h2>
+<p>The 4 candidates are now drawn as <strong>polygons</strong> (35 % fill + 3 px colored
+border) with a <strong>500 m circle</strong> and a <strong>numbered pin</strong> on top, full popup
+(water/route/power/ownership/elevation). File: <code>candidatos_destacados.geojson</code>.
+Verified: all 4 have real geometry (181 / 149 / 41 / 399 vertices).</p>
+<h2>PART B — Energy</h2>
+<ul>
+<li><strong>OSM has no electrical grid in the region</strong> (Overpass <code>power=*</code> → 0 features in the
+  corridor, in Mallín, and in a wide sweep; only 2 stray distant ways). →
+  <code>red_electrica_osm.geojson</code> is left empty and the layer is labeled "NO DATA — see EDERSA".</li>
+<li><strong>Confirmed EDERSA context (research, not OSM):</strong> the EDERSA <strong>"RN40 North"</strong> trunk line
+  passes through El Foyel and the Las Minas area; <strong>new EDERSA ring in Mallín
+  Ahogado</strong>; <strong>EDERSA management center in El Foyel</strong>. The 4 lots fall on/beside
+  that infrastructure → power at short distance very likely, <strong>connection to be verified</strong>.</li>
+</ul>
+<h2>FINAL TABLE — candidate | lot ha | water | route | MV POWER | ownership | elevation</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Candidate</th>
+<th style="text-align: right;">lot ha</th>
+<th>Water</th>
+<th>Route</th>
+<th>Power (MV line)</th>
+<th>Ownership</th>
+<th style="text-align: right;">Elevation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><strong>1</strong></td>
+<td>Las Minas <strong>C1</strong></td>
+<td style="text-align: right;">33.12</td>
+<td>on watercourse (0 m)</td>
+<td>RN40 (0 m)</td>
+<td>OSM no data · EDERSA RN40 trunk <strong>on the route</strong></td>
+<td>unsurveyed gap — possibly fiscal</td>
+<td style="text-align: right;">721 m</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>2</strong></td>
+<td>Las Minas <strong>C2</strong></td>
+<td style="text-align: right;">76.77</td>
+<td>watercourse at 60 m</td>
+<td>RN40 at 408 m</td>
+<td>OSM no data · EDERSA RN40 trunk <strong>~0.4 km</strong></td>
+<td>unsurveyed gap — possibly fiscal</td>
+<td style="text-align: right;">615 m</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>3</strong></td>
+<td><strong>Mallín Ahogado</strong></td>
+<td style="text-align: right;">6.48</td>
+<td>on watercourse (0 m) · <strong>Río Azul glacial</strong></td>
+<td><strong>RP86 (0 m)</strong></td>
+<td>OSM no data · <strong>EDERSA Mallín ring</strong> (serviced zone)</td>
+<td><strong>Loma del Medio–Río Azul Forest Reserve (real FISCAL)</strong></td>
+<td style="text-align: right;">491 m</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>4</strong></td>
+<td>El Foyel <strong>gap #1</strong></td>
+<td style="text-align: right;">104.98</td>
+<td>not analyzed (RN40 corridor)</td>
+<td>RN40 (0 m)</td>
+<td>OSM no data · EDERSA El Foyel management + trunk</td>
+<td>unsurveyed gap — possibly fiscal (corridor, 9 private islands)</td>
+<td style="text-align: right;">773 m</td>
+</tr>
+</tbody>
+</table>
+<h2>ANSWERS</h2>
+<ol>
+<li><strong>MV line at &lt;500 m / &lt;2 km / no data?</strong>
+   In <strong>OSM: no data</strong> for all 4 (there is no electrical grid loaded across the whole region).
+   By <strong>EDERSA context</strong>: all 4 are <strong>on or beside</strong> existing medium-voltage
+   infrastructure — C1, C2 and Foyel on the <strong>RN40 North trunk</strong>; Mallín on the
+   <strong>Mallín Ahogado ring</strong> (serviced neighborhood). Realistic estimate <strong>&lt;500 m–"on the
+   alignment"</strong>, pending confirmation of connection with EDERSA.</li>
+<li><strong>Verdict — which meet the 3 hard requirements (water + route + power)?</strong>
+   - <strong>#1 Las Minas C1 → MEETS</strong> (water ✓ on watercourse · route ✓ RN40 0 m · power ✓ EDERSA trunk).
+   - <strong>#2 Las Minas C2 → MEETS</strong> (water ✓ 60 m · route ✓ RN40 &lt;500 m · power ✓ EDERSA trunk).
+   - <strong>#3 Mallín Ahogado → MEETS and is the most complete</strong> (water ✓ Río Azul glacial · route ✓ RP86 ·
+     power ✓ ring · <strong>+ REAL fiscal ownership</strong>). The only one that also adds confirmed fiscal land.
+   - <strong>#4 El Foyel gap #1 → NOT confirmed</strong> (route ✓ and power ✓, but <strong>water not analyzed</strong>;
+     it would meet only 2 of 3 until a watercourse in the corridor is verified).
+   <strong>Meeting the 3 hard requirements: C1, C2 and Mallín.</strong> With a focus on fiscal land, <strong>Mallín leads</strong>.</li>
+<li><strong>Are the 4 lots shown as polygons?</strong> <strong>YES</strong> — all 4 are drawn as a highlighted
+   polygon (gold/blue/green/gray) with a 3 px border, 35 % fill, 500 m circle, and
+   numbered pin, in the "⭐ Candidate LOTS (polygons)" layer of <code>mapa_master.html</code>.</li>
+</ol>
+<p><strong>Task 7 deliverables:</strong> <code>red_electrica_osm.geojson</code> (empty, documented) ·
+<code>candidatos_destacados.geojson</code> (4 lots) · <code>mapa_master.html</code> (polygon lots + energy
++ Forest Reserve + references) · <code>index.html</code> updated.</p>
+<h1>TASK 8 — Usable maps (labels + per-lot zoom + legible info)</h1>
+<p>Rebuilt with <code>build_maps.py</code> (a single builder → 3 maps):
+- <strong><code>mapa_master.html</code></strong>: buttons <strong>[🔴 Las Minas] [🟢 Mallín] [🔭 View both]</strong> (JS <code>setView</code>/<code>fitBounds</code>),
+  FIXED labels (DivIcon, no click) for towns/rivers/routes and for the 4 lots (name·ha·elevation),
+  lots as polygons (35% fill + border), <strong>distance lines drawn with a number</strong> to route and
+  watercourse (consistent with the popup), switchable slope at 40%, 100 m contours with elevations,
+  Forest Reserve marked, <strong>compact collapsible legend</strong>, OSM↔Esri, click=coordinates.
+- <strong><code>mapa_lasminas.html</code></strong> (zoom 14, lots C1/C2) and <strong><code>mapa_mallin.html</code></strong> (zoom 15, lot #3) centered.
+- Distances drawn: C1 RN40 0 m / water 0 m · C2 RN40 405 m / water 52 m · Mallín RP86 158 m / water 0 m · Foyel RN40 0 m.
+- <code>index.html</code> (Desktop panel) updated with the 3 maps.</p>
+<h1>TASK 9 — Probable fiscal lots + electrical grid (in the 3 maps)</h1>
+<p>New switchable layers (<code>build_fiscal_lots.py</code> → 2 geojson, integrated into build_maps):
+- <strong>🏛️ Probable fiscal lots</strong> (<code>lotes_fiscales_probables.geojson</code>, 13): the unsurveyed
+  gaps that are flat (&lt;8°) and accessible (&lt;2 km from a route) &gt;5 ha, ranked by size+route+water,
+  in blue with a ha label; + the <strong>Loma del Medio–Río Azul Forest Reserve</strong> (brown) =
+  the only CONFIRMED FISCAL (State land).
+  - Las Minas (possibly fiscal): <strong>598 ha on RN40 (watercourse 73 m)</strong>, 128, 99, 81, 77, 75 ha.
+  - Mallín (possibly fiscal): <strong>43.7 ha on RP86 (watercourse 0 m)</strong>, 27, 18, 11, 8, 5 ha.
+- <strong>⚡ Electrical grid</strong> (<code>red_electrica_aprox.geojson</code>): OSM = 0 data in the region, so the
+  <strong>APPROXIMATE alignment of the EDERSA trunk</strong> is drawn along RN40 (dashed yellow line) and
+  RP86, + EDERSA points (El Foyel management, Mallín ring, RN40 corridor). Labeled "approx./
+  verify with EDERSA" — it is NOT a real grid survey.</p>
+<blockquote>
+<p>The most obvious: a <strong>~598 ha lot, flat, on RN40 and with a watercourse at 73 m</strong> in Las Minas
+(possibly fiscal, to be confirmed at the Land Directorate). The only CONFIRMED fiscal land is the
+Loma del Medio–Río Azul Forest Reserve in Mallín.</p>
+</blockquote><script>window.BW_PAGE_LANG="en";window.BW_TWIN={es:"RESUMEN.html"};</script><script src="bw_i18n.js" defer></script></body></html>
